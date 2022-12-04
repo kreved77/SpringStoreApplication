@@ -17,15 +17,15 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findByTitleContainingIgnoreCase(String name);
 
     // Поиск по части наименования товара и фильтрация по диапазону цен
-    @Query(value = "select * from product where ((lower(title) LIKE %?1%) or (lower(title) LIKE '?1%') or (lower(title) LIKE '%?1') and (price >= ?2 and price <= ?3))", nativeQuery = true)
+    @Query(value = "select * from product where (((lower(title) LIKE %?1%) or (lower(title) LIKE '?1%') or (lower(title) LIKE '%?1')) and (price >= ?2 and price <= ?3))", nativeQuery = true)
     List<Product> findByTitleAndPriceGreaterThanEqualAndPriceLessThan(String title, float ot, float Do);
 
     // Поиск по части наименования товара и фильтрация по диапазону цен, сортировка по возрастанию
-    @Query(value = "select * from product where ((lower(title) LIKE %?1%) or (lower(title) LIKE '?1%') or (lower(title) LIKE '%?1') and (price >= ?2 and price <= ?3) order by price)", nativeQuery = true)
+    @Query(value = "select * from product where (((lower(title) LIKE %?1%) or (lower(title) LIKE '?1%') or (lower(title) LIKE '%?1')) and (price >= ?2 and price <= ?3)) order by price", nativeQuery = true)
     List<Product> findByTitleOrderByPrice(String title, float ot, float Do);
 
     // Поиск по части наименования товара и фильтрация по диапазону цен, сортировка по убыванию
-    @Query(value = "select * from product where ((lower(title) LIKE %?1%) or (lower(title) LIKE '?1%') or (lower(title) LIKE '%?1') and (price >= ?2 and price <= ?3) order by price desc)", nativeQuery = true)
+    @Query(value = "select * from product where (((lower(title) LIKE %?1%) or (lower(title) LIKE '?1%') or (lower(title) LIKE '%?1')) and (price >= ?2 and price <= ?3)) order by price desc", nativeQuery = true)
     List<Product> findByTitleOrderByPriceDesc(String title, float ot, float Do);
 
 
