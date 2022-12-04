@@ -5,6 +5,8 @@
     <title>Список товаров: </title>
 </head>
 <body>
+<a href="/auth/login">Авторизация</a>
+<br>
 <form th:method="POST" th:action="@{/product/search}">
 <fieldset>
     <legend>Выберите параметры для сортировки, поиска, фильтрации</legend>
@@ -27,15 +29,15 @@
     <label for="descending_price">Отсортировать по убыванию цены</label>
     <p>Категория товаров: </p>
     <input type="radio" id="furniture" name="category" value="furniture">
-    <label for="furniture">Мебель</label>
+    <label for="furniture">Кат1-Мебель</label>
     <br>
     <br>
     <input type="radio" id="appliances" name="category" value="appliances">
-    <label for=appliances>Бытовая техника</label>
+    <label for=appliances>Кат2-Бытовая техника</label>
     <br>
     <br>
     <input type="radio" id="clothes" name="category" value="clothes">
-    <label for="clothes">Одежка</label>
+    <label for="clothes">Кат3-Одежка</label>
     <br>
     <br>
     <input type="submit" value="Найти">

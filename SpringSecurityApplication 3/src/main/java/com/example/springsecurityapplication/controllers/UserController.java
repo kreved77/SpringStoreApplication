@@ -94,10 +94,10 @@ public class UserController {
         return "user/cart";
     }
 
-    @GetMapping("/info/{id}")
+    @GetMapping("/user/product/info/{id}")
     public String infoProduct(@PathVariable("id") int id, Model model){
         model.addAttribute("product", productService.getProductId(id));
-        return "product/infoProduct";
+        return "user/infoProduct";
     }
 
     @GetMapping("/cart/delete/{id}")

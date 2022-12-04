@@ -15,5 +15,7 @@
 <div th:each="img : ${product.getImageList()}">
     <img th:src="'/img/' + ${img.getFileName()}" width="300px">
 </div>
+<a th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a>
+<a href="/index">Назад ко всем товарам</a>
 </body>
 </html>
