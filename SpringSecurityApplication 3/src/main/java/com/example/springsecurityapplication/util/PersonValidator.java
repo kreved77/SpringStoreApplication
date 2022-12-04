@@ -28,4 +28,13 @@ public class PersonValidator implements Validator {
             errors.rejectValue("login", "", "Логин занят");
         }
     }
+
+
+    public void findUser(Object target, Errors errors) {
+        Person person = (Person) target;
+        // Если метод по поиску пользователя по логину равен 0 тогда такой логин не найден
+        if(personService.getPersonFindByLogin(person) == null){
+            errors.rejectValue("login", "", "Пользователь c таким логином не найден.");
+        }
+    }
 }
