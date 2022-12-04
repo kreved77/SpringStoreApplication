@@ -50,5 +50,23 @@ public class AuthController {
         return "redirect:/index";
     }
 
+    @GetMapping("/password/change")
+    public String changePassword(Model model){
+        model.addAttribute("person", new Person());
+        return "password";
+    }
+
+    @PostMapping("/password/change")
+    public String changePassword(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult){
+
+        Person person_db = personService.getPersonFindByLogin(person);
+
+        int id = person_db.getId();
+        String password = person.getPassword();
+        personService.changePassword(id, password);
+
+        return "redirect:/index";
+    }
+
 
 }
