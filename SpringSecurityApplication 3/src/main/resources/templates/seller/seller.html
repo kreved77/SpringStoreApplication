@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- addseller -->
+<head>
+    <meta charset="UTF-8">
+    <title>Панель продавца</title>
+</head>
+<body>
+<h3>Личный кабинет Продавца</h3>
+<form th:method="POST" th:action="@{/logout}">
+    <input type="submit" value="Выйти из личного кабинета">
+</form>
+<form method="get" th:action="@{/auth/password/changepersonal}">
+    <input type="submit" value="Изменить свой пароль (Personal)">
+</form>
+<a href="/admin/product/add">Добавить товар</a>
+<h3>Каталог товаров: </h3>
+<hr>
+<div th:each="product : ${products}">
+    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
+    <p th:text="'Описание: ' + ${product.getDescription()}"></p>
+    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+    <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
+    <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+    <p th:text="'Категория товара: ' + ${product.getCategory().getName()}"></p>
+    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>
+    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>
+    <hr>
+</div>
+</body>
+</html>

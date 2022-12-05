@@ -62,6 +62,11 @@ public class UserController {
         if(role.equals("ROLE_ADMIN")){
             return "redirect:/admin";
         }
+        // addseller
+        if(role.equals("ROLE_SELLER")){
+            return "redirect:/seller";
+        }
+        // addseller end
         model.addAttribute("products", productService.getAllProduct());
         return "user/index";
     }
