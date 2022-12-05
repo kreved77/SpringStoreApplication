@@ -18,6 +18,9 @@
     <div th:if="${param.error}" style="color: red">
         Неправильный логин или пароль
     </div>
+    <div th:if="${param.logout}">
+        Вы успешно вышли из личного кабинета.
+    </div>
 </form>
 <a href="/auth/registration">Регистрация</a>
 <a href="/auth/password/change">Изменить пароль</a>
