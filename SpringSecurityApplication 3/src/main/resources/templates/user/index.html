@@ -10,6 +10,11 @@
 <form method="post" th:action="@{/logout}">
     <input type="submit" value="Выйти из личного кабинета">
 </form>
+<form method="get" th:action="@{/auth/password/changepersonal}">
+    <input type="submit" value="Изменить свой пароль (Personal)">
+</form>
+<!--<a href="/auth/password/changepersonal">Изменить свой пароль (Personal)</a>-->
+<br>
 <form method="get" th:action="@{/cart}">
     <input type="submit" value="Корзина">
 </form>
