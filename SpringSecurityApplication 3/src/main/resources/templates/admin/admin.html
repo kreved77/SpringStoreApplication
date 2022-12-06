@@ -9,6 +9,12 @@
 <form th:method="POST" th:action="@{/logout}">
     <input type="submit" value="Выйти из личного кабинета">
 </form>
+<form method="get" th:action="@{/auth/password/changepersonal}">
+    <input type="submit" value="Изменить свой пароль (Personal)">
+</form>
+<br>
+<a href="/admin/person">Пользователи</a>
+<br>
 <a href="/admin/product/add">Добавить товар</a>
 <h3>Каталог товаров: </h3>
 <hr>
