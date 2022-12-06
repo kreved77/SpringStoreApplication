@@ -75,10 +75,10 @@ public class PersonService {
         return person.orElse(null);
     }
 
-    // Данный метод позволяет получить пользователя по Role
-    public Person getPersonRole(String role){
-        Optional<Person> person = personRepository.findByRole(role);
-        return person.orElse(null);
+    // Данный метод позволяет получить пользователей по Role
+    public List<Person> getPersonRole(String role){
+        List<Person>  person = personRepository.findByRole(role);
+        return person;
     }
 
 }
