@@ -10,4 +10,11 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
     List<Order> findByPerson(Person person);
+
+    List<Order> findByNumberEndingWithIgnoreCase(String number);
+
+    // Поиск по части наименования заказа
+//    @Query(value = "select * from orders where (lower(number) LIKE '%?1') order by date_time DESC" , nativeQuery = true)
+//    List<Order> findByNumberLastOrderByDateDesc(String number);
+
 }

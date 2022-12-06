@@ -1,9 +1,11 @@
 package com.example.springsecurityapplication.controllers;
 
 import com.example.springsecurityapplication.models.Image;
+import com.example.springsecurityapplication.models.Order;
 import com.example.springsecurityapplication.models.Person;
 import com.example.springsecurityapplication.models.Product;
 import com.example.springsecurityapplication.repositories.CategoryRepository;
+import com.example.springsecurityapplication.repositories.OrderRepository;
 import com.example.springsecurityapplication.security.PersonDetails;
 import com.example.springsecurityapplication.services.PersonService;
 import com.example.springsecurityapplication.services.ProductService;
@@ -21,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -35,13 +38,17 @@ public class AdminController {
     private final ProductService productService;
 
     private final CategoryRepository categoryRepository;
+
+    private final OrderRepository orderRepository;
+
     private final PersonService personService;
 
     @Autowired
-    public AdminController(ProductValidator productValidator, ProductService productService, CategoryRepository categoryRepository, PersonService personService) {
+    public AdminController(ProductValidator productValidator, ProductService productService, CategoryRepository categoryRepository, OrderRepository orderRepository, PersonService personService) {
         this.productValidator = productValidator;
         this.productService = productService;
         this.categoryRepository = categoryRepository;
+        this.orderRepository = orderRepository;
         this.personService = personService;
     }
 
@@ -221,6 +228,36 @@ public class AdminController {
     }
 
 
+
+
+// ORDER
+
+
+    @GetMapping("/orders")
+    public String ordersAdmin(Model model){
+        List<Order> orderList = orderRepository.findAll();
+        model.addAttribute("orders", orderList);
+        return "/admin/orders";
+    }
+
+    @PostMapping("/orders/search")
+    public String orderSearch(@RequestParam("search_value") String search, Model model){
+        System.out.println(search);
+        // Если строка поиска не пустая
+        if(!search.isEmpty()) {
+            model.addAttribute("search_order", orderRepository.findByNumberEndingWithIgnoreCase(search));
+        }
+        model.addAttribute("person", personService.getAllPerson());
+        model.addAttribute("search_value", search);
+        model.addAttribute("orders", orderRepository.findAll());
+        return "/admin/orders";
+    }
+
+
+
+
+
+// PERSON
     // Метод возвращает страницу с выводом пользователей и кладет объект пользователя в модель
     @GetMapping("/person")
     public String person(Model model){;

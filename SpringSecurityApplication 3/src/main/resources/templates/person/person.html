@@ -36,7 +36,7 @@
                 <td th:text="${user.getLastname()}"></td>
                 <td th:text="${user.getEmail()}"></td>
                 <td th:text="${user.getPhoneNumber()}"></td>
-                <td th:text="${user.getRole()}"/></p>
+                <td th:text="${user.getRole()}"></td>
                 <td>
                     <select name="role" id="role">
                         <option th:value="ROLE_USER" th:text="ROLE_USER" th:selected="${user.getRole()} == 'ROLE_USER' ? true : false" ></option>
