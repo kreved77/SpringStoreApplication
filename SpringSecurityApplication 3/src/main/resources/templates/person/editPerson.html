@@ -16,7 +16,12 @@
   <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
   <br>
   <label for="role">Введите роль: </label>
-  <input type="text" th:field="*{role}" id="role">
+  <select th:field="*{role}" name="role" id="role">
+    <option th:value="ROLE_USER" th:text="ROLE_USER" th:selected="${editPerson.getRole()} == 'ROLE_USER' ? true : false" ></option>
+    <option th:value="ROLE_SELLER" th:text="ROLE_SELLER" th:selected="${editPerson.getRole()} == 'ROLE_SELLER' ? true : false"></option>
+    <option th:value="ROLE_ADMIN" th:text="ROLE_ADMIN" th:selected="${editPerson.getRole()} == 'ROLE_ADMIN' ? true : false"></option>
+  </select>
+<!--  <input type="text" th:field="*{role}" id="role">-->
   <div style="color: red" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
   <br>
   <label for="first_name">Введите имя: </label>
