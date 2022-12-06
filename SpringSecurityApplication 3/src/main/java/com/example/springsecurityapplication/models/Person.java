@@ -1,6 +1,7 @@
 package com.example.springsecurityapplication.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -26,6 +27,26 @@ public class Person {
 
     @Column(name = "role")
     private String role;
+
+    @NotEmpty(message = "Фамилия не может быть пустой")
+    @Size(min = 2, max = 30, message = "Фамилия должна быть в диапазоне от 2 до 30 символов")
+    @Column(name = "lastname", length = 30, nullable = false, unique = false, columnDefinition = "text")
+    private String lastname;
+
+    @NotEmpty(message = "Имя не может быть пустым")
+    @Size(min = 2, max = 30, message = "Имя должно быть в диапазоне от 2 до 30 символов")
+    @Column(name = "firstname", length = 30, nullable = false, unique = false, columnDefinition = "text")
+    private String firstname;
+
+    @NotEmpty(message = "Email пользователя не может быть пустым")
+    @Email(message = "Вы ввели не email")
+    @Column(name = "email", length = 40, nullable = false, unique = true, columnDefinition = "text")
+    private String email;
+
+    @NotEmpty(message = "Номер телефона не может быть пустым")
+    @Pattern(regexp = "^((\\+7|7|8)+([0-9]){10})$", message = "Норме телефона должен быть в формате +7/7/89159058431")
+    @Column(name = "phoneNumber", length = 12, nullable = false, unique = true, columnDefinition = "text")
+    private String phoneNumber;
 
     @ManyToMany()
     @JoinTable(name = "product_cart", joinColumns = @JoinColumn(name = "person_id"),inverseJoinColumns = @JoinColumn(name = "product_id"))
@@ -61,9 +82,45 @@ public class Person {
     public Person() {
     }
 
-    public Person(String login, String password) {
+    public Person(String login, String password, String lastname, String firstname, String email, String phoneNumber) {
         this.login = login;
         this.password = password;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getRole() {

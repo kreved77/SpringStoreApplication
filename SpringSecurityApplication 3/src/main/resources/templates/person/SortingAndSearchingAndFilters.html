@@ -27,6 +27,10 @@
     <p th:text="'id=' + ${person.getId()}"></p>
     <p th:text="'Логин: ' + ${person.getLogin()}"></p>
     <p th:text="'Роль: ' + ${person.getRole()}"/></p>
+    <p th:text="'Имя: ' + ${person.getFirstname()}"></p>
+    <p th:text="'Фамилия: ' + ${person.getLastname()}"></p>
+    <p th:text="'Email: ' + ${person.getEmail()}"></p>
+    <p th:text="'Телефон: ' + ${person.getPhoneNumber()}"></p>
     <a th:href="@{/admin/person/edit/{id}(id=${person.getId()})}">Редактировать пользователя</a>
     <hr>
 </div>

@@ -7,41 +7,34 @@
 <body>
 <h3>Редактирование пользователей</h3>
 <form method="POST" th:action="@{/admin/person/edit/{id}(id=${editPerson.getId()})}" th:object="${editPerson}">
-  <label for="login">Введите логин: </label>
-  <input type="text" th:field="*{login}" id="login">
+  <label for="login">Логин: </label>
+  <input type="text" th:field="*{login}" id="login" readonly="readonly"> (не доступно для изменения)
   <div style="color: red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
   <br>
-  <label for="password">Введите пароль: </label>
-  <input type="text" th:field="*{password}" id="password">
+  <label for="password">Пароль: </label>
+  <input type="text" th:field="*{password}" id="password" readonly="readonly"> (не доступно для изменения)
   <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
   <br>
   <label for="role">Введите роль: </label>
   <input type="text" th:field="*{role}" id="role">
   <div style="color: red" th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></div>
   <br>
-<!--  <label for="last_name">Введите фамилию: </label>-->
-<!--  <input type="text" th:field="*{lastname}" id="last_name">-->
-<!--  <div style="color: red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>-->
-<!--  <br>-->
-<!--  <label for="first_name">Введите имя: </label>-->
-<!--  <input type="text" th:field="*{firstname}" id="first_name">-->
-<!--  <div style="color: red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div>-->
-<!--  <br>-->
-<!--  <label for="patronymic">Введите отчество: </label>-->
-<!--  <input type="text" th:field="*{patronymic}" id="patronymic">-->
-<!--  <br>-->
-<!--  <label for="birthday">Введите возраст: </label>-->
-<!--  <input type="date" th:field="*{birthday}" id="birthday">-->
-<!--  <div style="color: red" th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}"></div>-->
-<!--  <br>-->
-<!--  <label for="email">Введите email: </label>-->
-<!--  <input type="text" th:field="*{email}" id="email">-->
-<!--  <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>-->
-<!--  <br>-->
-<!--  <label for="phone_number">Введите номер телефона: </label>-->
-<!--  <input type="text" th:field="*{phoneNumber}" id="phone_number">-->
-<!--  <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>-->
-<!--  <br>-->
+  <label for="first_name">Введите имя: </label>
+  <input type="text" th:field="*{firstname}" id="first_name">
+  <div style="color: red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div>
+  <br>
+  <label for="last_name">Введите фамилию: </label>
+  <input type="text" th:field="*{lastname}" id="last_name">
+  <div style="color: red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
+  <br>
+  <label for="email">Введите email: </label>
+  <input type="text" th:field="*{email}" id="email">
+  <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+  <br>
+  <label for="phone_number">Введите номер телефона: </label>
+  <input type="text" th:field="*{phoneNumber}" id="phone_number">
+  <div style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+  <br>
   <input type="submit" value="Сохранить изменения">
 </form>
 <hr>

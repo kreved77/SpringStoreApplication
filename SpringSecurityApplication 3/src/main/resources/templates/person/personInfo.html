@@ -9,12 +9,10 @@
 <p th:text="'Логин: ' + ${person.getLogin()}"/>
 <p th:text="'Пароль: ' + ${person.getPassword()}"/>
 <p th:text="'Роль: ' + ${person.getRole()}"/>
-<!--<p th:text="'Фамилия: ' + ${person.getLastname()}"/>-->
-<!--<p th:text="'Имя: ' + ${person.getFirstname()}"/>-->
-<!--<p th:text="'Отчество: ' + ${person.getPatronymic()}"/>-->
-<!--<p th:text="'Дата рождения: ' + ${person.getBirthday()}"/>-->
-<!--<p th:text="'Email: ' + ${person.getEmail()}"/>-->
-<!--<p th:text="'Номер телефона: ' + ${person.getPhoneNumber()}"/>-->
+<p th:text="'Имя: ' + ${person.getFirstname()}"/>
+<p th:text="'Фамилия: ' + ${person.getLastname()}"/>
+<p th:text="'Email: ' + ${person.getEmail()}"/>
+<p th:text="'Номер телефона: ' + ${person.getPhoneNumber()}"/>
 <a th:href="@{/admin/person/edit/{id}(id=${person.getId()})}">Редактировать пользователя</a>
 <a th:href="@{/admin/person/delete/{id}(id=${person.getId()})}">Удалить пользователя</a>
 
