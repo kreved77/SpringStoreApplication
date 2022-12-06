@@ -281,6 +281,12 @@ public class AdminController {
             model.addAttribute("person", personService.getPersonLogin(value));
         } else if (sortingAndSearchingAndFiltersOptions.equals("role")){
             model.addAttribute("person", personService.getPersonRole(value));
+        } else if (sortingAndSearchingAndFiltersOptions.equals("email")){
+            model.addAttribute("person",personService.getPersonEmail(value));
+        } else if (sortingAndSearchingAndFiltersOptions.equals("phone_number")) {
+            model.addAttribute("person",personService.getPersonPhoneNumber(value));
+        } else if (sortingAndSearchingAndFiltersOptions.equals("last_name_start")) {
+            model.addAttribute("person",personService.getPersonLastNameStartingWith(value));
         }
         return "person/SortingAndSearchingAndFilters";
     }

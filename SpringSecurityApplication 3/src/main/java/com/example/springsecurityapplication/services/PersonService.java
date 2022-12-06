@@ -88,4 +88,22 @@ public class PersonService {
         return person;
     }
 
+    // Данный метод позволяет получить пользователя по email адресу
+    public Person getPersonEmail(String email){
+        Optional<Person> optionalPersons = personRepository.findByEmail(email);
+        return optionalPersons.orElse(null);
+    }
+
+    // Данный метод позволяет получить пользователя по номеру телефона
+    public Person getPersonPhoneNumber(String phone_number){
+        Optional<Person> optionalPersons = personRepository.findByPhoneNumber(phone_number);
+        return optionalPersons.orElse(null);
+    }
+
+    // Данный метод позволяет получить пользователя по фамилии, где начало равно определенной последовательности
+    public Person getPersonLastNameStartingWith(String starting_with){
+        Optional<Person> optionalPersons = personRepository.findByLastnameStartingWith(starting_with);
+        return optionalPersons.orElse(null);
+    }
+
 }
