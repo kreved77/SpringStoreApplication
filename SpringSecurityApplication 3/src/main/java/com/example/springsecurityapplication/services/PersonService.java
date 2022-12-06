@@ -60,6 +60,13 @@ public class PersonService {
         personRepository.save(person);
     }
 
+    // Данный метод позволяет обновить РОЛЬ пользователя
+    @Transactional
+    public void updatePersonRole(String role, Person person){
+        person.setRole(role);
+        personRepository.save(person);
+    }
+
     // Данный метод позволяет удалить пользовател по id
     @Transactional
     public void deletePerson(int id){

@@ -242,13 +242,23 @@ public class AdminController {
         return "person/editPerson";
     }
 
-    // Метод принимает объект с формы и обновляет пользователя
+/*    // Метод принимает объект с формы и обновляет пользователя
     @PostMapping("/person/edit/{id}")
     public String editPerson(@ModelAttribute("editPerson") @Valid Person person, BindingResult bindingResult, @PathVariable("id") int id){
         if(bindingResult.hasErrors()){
             return "person/editPerson";
         }
         personService.updatePerson(id, person);
+        return "redirect:/admin/person";
+    }*/
+
+    // Метод принимает объект с формы и обновляет РОЛЬ пользователя
+    @PostMapping("/person/edit/{id}")
+    public String editPersonRole(@ModelAttribute("editPerson") @Valid Person person, BindingResult bindingResult, @RequestParam("role") String role, @PathVariable("id") int id){
+        Person person_role = personService.getPersonById(id);
+//        person_role.setRole(role);
+        personService.updatePersonRole(role, person_role);
+
         return "redirect:/admin/person";
     }
 

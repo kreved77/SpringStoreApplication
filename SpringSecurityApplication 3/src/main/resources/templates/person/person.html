@@ -10,9 +10,46 @@
 <body>
 
 <h3>Список пользователей: </h3>
-<div th:each="element : ${person}">
-    <a th:href="@{/admin/person/info/{id}(id=${element.getId()})}" th:text="${element.getLogin()}"></a>
-</div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Логин</th>
+<!--            <th>Пароль</th>-->
+            <th>Роль (текущая)</th>
+            <th>Новая роль</th>
+        </tr>
+        </thead>
+        <tbody>
+        <form method="POST" th:action="@{/admin/person/edit/{id}(id=${user.getId()})}" th:each="user : ${person}">
+
+            <tr>
+                <td><a th:href="@{/admin/person/info/{id}(id=${user.getId()})}" th:text="${user.getId()}"></a></td>
+                <td><a th:href="@{/admin/person/info/{id}(id=${user.getId()})}" th:text="${user.getLogin()}"></a></td>
+<!--                <td th:text="${user.getPassword()}"></td>-->
+                <td th:text="${user.getRole()}"></td>
+                <td>
+                    <select name="role" id="role">
+                        <option th:value="ROLE_USER" th:text="ROLE_USER" th:selected="${user.getRole()} == 'ROLE_USER' ? true : false" ></option>
+                        <option th:value="ROLE_SELLER" th:text="ROLE_SELLER" th:selected="${user.getRole()} == 'ROLE_SELLER' ? true : false"></option>
+                        <option th:value="ROLE_ADMIN" th:text="ROLE_ADMIN" th:selected="${user.getRole()} == 'ROLE_ADMIN' ? true : false"></option>
+                    </select>
+                </td>
+                <td>
+                    <button type="submit">Изменить</button>
+                </td>
+            </tr>
+
+        </form>
+        </tbody>
+    </table>
+
+
+
+<!--<div th:each="element : ${person}">-->
+<!--    <a th:href="@{/admin/person/info/{id}(id=${element.getId()})}" th:text="${element.getLogin()}"></a>-->
+<!--</div>-->
 <hr>
 <a href="/admin/person/sorting_and_searching_and_filters">Поиск, сортировка, фильтрация</a>
 <hr>
