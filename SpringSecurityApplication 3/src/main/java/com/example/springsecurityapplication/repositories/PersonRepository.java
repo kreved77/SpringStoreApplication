@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface PersonRepository extends JpaRepository<Person, Integer> {
     // Получаем запись из БД по логину
     Optional<Person> findByLogin(String login);
+    Optional<Person> findByRole(String role);
 
     @Modifying
     @Query(value = "UPDATE person SET password = ?2 WHERE id= ?1", nativeQuery = true)

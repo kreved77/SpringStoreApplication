@@ -66,4 +66,19 @@ public class PersonService {
         personRepository.deleteById(id);
     }
 
+
+//    SEARCHING and FILTER
+
+    // Данный метод позволяет получить пользователя по Login
+    public Person getPersonLogin(String login){
+        Optional<Person> person = personRepository.findByLogin(login);
+        return person.orElse(null);
+    }
+
+    // Данный метод позволяет получить пользователя по Role
+    public Person getPersonRole(String role){
+        Optional<Person> person = personRepository.findByRole(role);
+        return person.orElse(null);
+    }
+
 }
