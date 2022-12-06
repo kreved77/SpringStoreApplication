@@ -1,0 +1,18 @@
+PostgreSQL 14
+"db_shop"
+to commit "fix" 2d0a739cab177dc1286683cd354551fdd45f7bc9
+on Dec 6, 2022
+
+
+1--host "localhost" --port "5432" --username "postgres" --no-password --verbose --format=c --blobs --inserts --column-inserts "db_shop"
+NO encoding
+
+
+2
+--host "localhost" --port "5432" --username "postgres" --no-password --verbose --format=c --blobs --inserts --column-inserts --encoding "UTF8" "db_shop"
+
+3
+ --host "localhost" --port "5432" --username "postgres" --no-password --verbose --format=c --blobs --inserts --column-inserts --encoding "WIN1251"
+
+4
+--host "localhost" --port "5432" --username "postgres" --no-password --verbose --format=c --blobs --create --inserts --encoding "UTF8" "db_shop"
