@@ -271,6 +271,7 @@ public class AdminController {
             model.addAttribute("person", personService.getPersonLogin(value));
         } else if (sortingAndSearchingAndFiltersOptions.equals("role")){
             model.addAttribute("person", personService.getPersonRole(value));
+        }
         return "person/SortingAndSearchingAndFilters";
     }
 }
