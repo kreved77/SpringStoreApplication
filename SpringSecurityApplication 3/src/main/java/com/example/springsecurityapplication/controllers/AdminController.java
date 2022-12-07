@@ -7,6 +7,7 @@ import com.example.springsecurityapplication.models.Product;
 import com.example.springsecurityapplication.repositories.CategoryRepository;
 import com.example.springsecurityapplication.repositories.OrderRepository;
 import com.example.springsecurityapplication.security.PersonDetails;
+import com.example.springsecurityapplication.services.OrderService;
 import com.example.springsecurityapplication.services.PersonService;
 import com.example.springsecurityapplication.services.ProductService;
 import com.example.springsecurityapplication.util.ProductValidator;
@@ -41,14 +42,16 @@ public class AdminController {
 
     private final OrderRepository orderRepository;
 
+    private final OrderService orderService;
     private final PersonService personService;
 
     @Autowired
-    public AdminController(ProductValidator productValidator, ProductService productService, CategoryRepository categoryRepository, OrderRepository orderRepository, PersonService personService) {
+    public AdminController(ProductValidator productValidator, ProductService productService, CategoryRepository categoryRepository, OrderRepository orderRepository, OrderService orderService, PersonService personService) {
         this.productValidator = productValidator;
         this.productService = productService;
         this.categoryRepository = categoryRepository;
         this.orderRepository = orderRepository;
+        this.orderService = orderService;
         this.personService = personService;
     }
 
@@ -235,7 +238,7 @@ public class AdminController {
 
     @GetMapping("/orders")
     public String ordersAdmin(Model model){
-        List<Order> orderList = orderRepository.findAll();
+        List<Order> orderList = orderService.getAllOrders();
         model.addAttribute("orders", orderList);
         return "/admin/orders";
     }
@@ -245,7 +248,7 @@ public class AdminController {
         System.out.println(search);
         // Если строка поиска не пустая
         if(!search.isEmpty()) {
-            model.addAttribute("search_order", orderRepository.findByNumberEndingWithIgnoreCase(search));
+            model.addAttribute("search_order", orderService.getOrderByNumberEndingWith(search));
         }
         model.addAttribute("person", personService.getAllPerson());
         model.addAttribute("search_value", search);
