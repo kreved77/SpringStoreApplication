@@ -316,6 +316,30 @@ public class AdminController {
         return "redirect:/admin/person";
     }
 
+    // Метод по изменению пароля любому пользователю
+    @GetMapping("/password/change")
+    public String changePassword(Model model){
+        model.addAttribute("person", new Person());
+        return "password";
+    }
+
+    @PostMapping("/password/change")
+    public String changePassword(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult){
+
+//        personValidator.findUser(person, bindingResult);
+//        if(bindingResult.hasErrors()){
+//            return "password";
+//        }
+
+        Person person_db = personService.getPersonFindByLogin(person);
+
+        int id = person_db.getId();
+        String password = person.getPassword();
+        personService.changePassword(id, password);
+
+        return "redirect:/index";
+    }
+
     // Метод по нажатию на кнопку поиска и сортировки и отображение шаблона
     @GetMapping("/person/sorting_and_searching_and_filters")
     public String sorting_and_searching_and_filters(){
