@@ -9,6 +9,7 @@
 </head>
 <body>
 <h3>Вход</h3>
+<p id="hello"></p>
 <form method="post" action="/process_login">
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     <label for="username">Введите логин: </label>
