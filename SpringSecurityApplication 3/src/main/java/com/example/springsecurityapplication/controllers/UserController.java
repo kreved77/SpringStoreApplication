@@ -166,6 +166,7 @@ public class UserController {
     public String editOrderCancel(@ModelAttribute("editOrder") Order order, @PathVariable("id") int id){
         Order order_status = orderService.getOrderById(id);
         orderService.updateOrderCancel(order_status);
+        System.out.println("Status = \"Отменен\"? -> " + com.example.springsecurityapplication.enumm.Status.values()[4]);
         return "redirect:/orders";
     }
 
