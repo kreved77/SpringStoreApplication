@@ -25,7 +25,9 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/admin")
@@ -240,6 +242,11 @@ public class AdminController {
     public String ordersAdmin(Model model){
         List<Order> orderList = orderService.getAllOrders();
         model.addAttribute("orders", orderList);
+
+//   VER 2 - MapList
+        Map<String, List<Order>> orderMapList = orderList.stream().collect(Collectors.groupingBy(Order::getNumber));
+        model.addAttribute("ordersMap", orderMapList);
+
         return "/admin/orders";
     }
 

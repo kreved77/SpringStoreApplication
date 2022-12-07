@@ -59,12 +59,13 @@
             <tr>
                 <td><a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="${order.getId()}"></a></td>
                 <td th:text="${order.getDateTime()}"></td>
-                <td th:text="${order.getStatus()}"></td>
-                <td th:text="${order.getProduct().getTitle()}"></td>
+<!--                <td th:text="${order.getProduct().getTitle()}"></td>-->
+                <td><a th:href="@{/user/product/info/{id}(id=${order.getProduct().getId()})}" th:text="${order.getProduct().getTitle()}"></a></td>
                 <td th:text="${order.getCount()}"></td>
                 <td th:text="${order.getPrice()}"></td>
-                <!--    <p th:text="'Покупатель: ' + ${order.get&#45;&#45;&#45;&#45;()}"/></p>-->
-                <td th:text="${order.getNumber()}"></td>
+                <td><a th:href="@{/admin/person/info/{id}(id=${order.getPerson().getId()})}" th:text="${order.getPerson().getLogin()}"></a></td>
+                <td><a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="${order.getNumber()}"></a></td>
+<!--                <td th:text="${order.getNumber()}"></td>-->
                 <td th:text="${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></td>
                 <td th:text="${order.getStatus()}"></td>
 <!--                <td>-->
@@ -83,6 +84,13 @@
         </tbody>
     </table>
 
+</tr>
+</tr>
+<h3>VER 2</h3>
+<div th:each="currentOrderRow, wholeOrder : ${ordersMap}" class="order-body">
+    <span class="order-identifier" th:text="'Идентификатор заказа: ' + ${currentOrderRow.getKey()}"></span>
+    <span class="order-status" th:text="${currentOrderRow.getValue().toArray()[0].getStatus()}"></span>
+</div>
 
 <hr>
 <a href="/index">Назад в Главное меню</a>
