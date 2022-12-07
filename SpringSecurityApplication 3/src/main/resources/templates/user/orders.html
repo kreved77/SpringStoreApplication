@@ -6,7 +6,8 @@
 </head>
 <body>
 <h3>Заказы</h3>
-<div th:each="order : ${orders}">
+<form method="POST" th:action="@{/orders/cancel/{id}(id=${order.getId()})}"  th:each="order : ${orders}">
+<div>
     <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
     <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="300px">
     <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
@@ -14,8 +15,11 @@
     <p th:text="'Цена: ' + ${order.getPrice()}"></p>
     <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
     <p th:text="'Статус: ' + ${order.getStatus()}"></p>
-    <hr>
 </div>
+    <button type="submit">Отменить</button>
+    <hr>
+
+</form>
 <a href="/index">Назад ко всем товарам</a>
 </body>
 </html>

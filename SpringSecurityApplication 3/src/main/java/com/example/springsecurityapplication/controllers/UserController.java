@@ -8,16 +8,14 @@ import com.example.springsecurityapplication.repositories.CartRepository;
 import com.example.springsecurityapplication.repositories.OrderRepository;
 import com.example.springsecurityapplication.repositories.ProductRepository;
 import com.example.springsecurityapplication.security.PersonDetails;
+import com.example.springsecurityapplication.services.OrderService;
 import com.example.springsecurityapplication.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,13 +29,15 @@ public class UserController {
     private final CartRepository cartRepository;
     private final ProductService productService;
     private final ProductRepository productRepository;
+    private final OrderService orderService;
 
     @Autowired
-    public UserController(OrderRepository orderRepository, CartRepository cartRepository, ProductService productService, ProductRepository productRepository) {
+    public UserController(OrderRepository orderRepository, CartRepository cartRepository, ProductService productService, ProductRepository productRepository, OrderService orderService) {
         this.orderRepository = orderRepository;
         this.cartRepository = cartRepository;
         this.productService = productService;
         this.productRepository = productRepository;
+        this.orderService = orderService;
     }
 
     @GetMapping("/index")
@@ -153,6 +153,20 @@ public class UserController {
         List<Order> orderList = orderRepository.findByPerson(personDetails.getPerson());
         model.addAttribute("orders", orderList);
         return "/user/orders";
+    }
+
+/*    // Метод возвращает страницу с формой редактирования order и помещает в модель объект редактируемого order по id
+    @GetMapping("/orders/edit/{id}")
+    public String editOrder(@PathVariable("id")int id, Model model){
+        model.addAttribute("editOrder", orderService.getOrderById(id));
+        return "/user/editOrder";
+    }*/
+
+    @PostMapping("/orders/cancel/{id}")
+    public String editOrderCancel(@ModelAttribute("editOrder") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderCancel(order_status);
+        return "redirect:/orders";
     }
 
     @PostMapping("/search")
