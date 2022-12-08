@@ -16,3 +16,7 @@ NO encoding
 
 4
 --host "localhost" --port "5432" --username "postgres" --no-password --verbose --format=c --blobs --create --inserts --encoding "UTF8" "db_shop"
+
+
+# user1 User1!23
+# admin Admin!23
