@@ -1,0 +1,7 @@
+PostgreSQL 14
+"db_shop"
+1st new
+on Dec 6, 2022
+
+
+ --host "localhost" --port "5432" --username "postgres" --no-password --verbose --format=c --blobs --inserts --column-inserts --encoding "UTF8" "db_shop"
