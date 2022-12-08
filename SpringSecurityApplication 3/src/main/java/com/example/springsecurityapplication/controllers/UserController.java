@@ -139,7 +139,7 @@ public class UserController {
         String uuid = UUID.randomUUID().toString();
 
         for (Product product: productList) {
-            Order newOrder = new Order(uuid, 1, product.getPrice(), Status.Оформлен, product, personDetails.getPerson());
+            Order newOrder = new Order(uuid, 1, product.getPrice(), Status.Обрабатывается, product, personDetails.getPerson());
             orderRepository.save(newOrder);
             cartRepository.deleteCartById(product.getId(), id_person);
         }
