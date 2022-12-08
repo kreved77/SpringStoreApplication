@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о заказе</title>
+</head>
+<body>
+<h2>Информация о заказе</h2>
+<hr>
+    <div>
+        <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
+        <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd MMMM yyyy')}"></p>
+        <p th:text="'Статус: ' + ${order.getStatus()}"></p>
+        <hr>
+        <h4>Изменить статус заказа</h4>
+        <!--        Принят, Обрабатывается, Доставляется, Исполнен, Отменен-->
+        <form method="POST" th:action="@{/admin/orders/status1/{id}(id=${order.getId()})}">
+            <button type="submit" th:disabled="${
+            (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[1])
+            or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[3])
+            or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4])
+             ? true : false}" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[1]}"></button>
+        </form>
+        <form method="POST" th:action="@{/admin/orders/status2/{id}(id=${order.getId()})}">
+            <button type="submit" th:disabled="${
+            (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[2])
+            or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[3])
+            or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4])
+             ? true : false}" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[2]}"></button>
+        </form>
+        <form method="POST" th:action="@{/admin/orders/status3/{id}(id=${order.getId()})}">
+            <button type="submit" th:disabled="${
+            (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[3])
+            or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4])
+             ? true : false}" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[3]}"></button>
+        </form>
+        <form method="POST" th:action="@{/admin/orders/cancel/{id}(id=${order.getId()})}">
+            <button type="submit" th:disabled="${
+            (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[3])
+            or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4])
+             ? true : false}" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[4]}"></button>
+        </form>
+        <hr>
+        <h4>Товары</h4>
+<!--        <p th:text="'id=' + ${order.getId()}"></p>-->
+        <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="120px">
+        <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
+        <p th:text="'Количество: ' + ${order.getCount()}"></p>
+        <p th:text="'Цена: ' + ${order.getPrice()}"></p>
+        <a th:href="@{/user/product/info/{id}(id=${order.getProduct().getId()})}" th:text="'(открыть карточку товара: ' + ${order.getProduct().getTitle()} + ')'"></a>
+        <hr>
+
+        <h4 th:text="'Покупатель: ' + ${order.getPerson().getLogin()}"></h4>
+        <p th:text="'Имя: ' + ${order.getPerson().getFirstname()}"></p>
+        <p th:text="'Фамилия: ' + ${order.getPerson().getLastname()}"></p>
+        <p th:text="'Email: ' + ${order.getPerson().getEmail()}"></p>
+        <p th:text="'Номер телефона: ' + ${order.getPerson().getPhoneNumber()}"></p>
+        <p th:text="'Покупатель: ' + ${order.getPerson().getLogin()}"></p>
+        <a th:href="@{/admin/person/info/{id}(id=${order.getPerson().getId()})}" th:text="'(открыть карточку пользователя: ' + ${order.getPerson().getLogin()} + ')'"></a>
+        <hr>
+    <hr>
+    <a href="/admin/orders">Назад ко всем заказам</a>
+    <a href="/admin/person">Назад ко всем пользователям</a>
+    <a href="/index">Назад в Главное меню</a>
+</body>
+</html>

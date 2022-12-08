@@ -48,17 +48,17 @@
             <th>Стоимость</th>
             <th>Покупатель</th>
             <th>Номер заказа</th>
-            <th>Статус (текущий)</th>
-            <th>Новый статус</th>
+            <th>Статус</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <form method="POST" th:action="@{/admin/order/editstatus/{id}(id=${order.getId()})}" th:each="order : ${orders}">
+        <form method="GET" th:action="@{/admin/order/info/{id}(id=${order.getId()})}" th:each="order : ${orders}">
 
             <tr>
                 <td><a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="${order.getId()}"></a></td>
-                <td th:text="${order.getDateTime()}"></td>
+<!--                <td th:text="${order.getDateTime()}"></td>-->
+                <td th:text="${#temporals.format(order.getDateTime(), 'dd MMMM yyyy')}"></td>
 <!--                <td th:text="${order.getProduct().getTitle()}"></td>-->
                 <td><a th:href="@{/user/product/info/{id}(id=${order.getProduct().getId()})}" th:text="${order.getProduct().getTitle()}"></a></td>
                 <td th:text="${order.getCount()}"></td>
@@ -66,18 +66,10 @@
                 <td><a th:href="@{/admin/person/info/{id}(id=${order.getPerson().getId()})}" th:text="${order.getPerson().getLogin()}"></a></td>
                 <td><a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="${order.getNumber()}"></a></td>
 <!--                <td th:text="${order.getNumber()}"></td>-->
-                <td th:text="${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></td>
                 <td th:text="${order.getStatus()}"></td>
-<!--                <td>-->
-<!--                    <select name="role" id="role">-->
-<!--                        <option th:value="ROLE_USER" th:text="ROLE_USER" th:selected="${user.getRole()} == 'ROLE_USER' ? true : false" ></option>-->
-<!--                        <option th:value="ROLE_SELLER" th:text="ROLE_SELLER" th:selected="${user.getRole()} == 'ROLE_SELLER' ? true : false"></option>-->
-<!--                        <option th:value="ROLE_ADMIN" th:text="ROLE_ADMIN" th:selected="${user.getRole()} == 'ROLE_ADMIN' ? true : false"></option>-->
-<!--                    </select>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                    <button type="submit">Изменить</button>-->
-<!--                </td>-->
+                <td>
+                    <button type="submit">Подробнее</button>
+                </td>
             </tr>
 
         </form>

@@ -48,6 +48,27 @@ public class OrderService {
         orderRepository.save(order);
     }
 
+    // Данный метод позволяет обновить информацию о заказе - Обрабатывается
+    @Transactional
+    public void updateOrderStatus1(Order order){
+        order.setStatus(Status.Обрабатывается);
+        orderRepository.save(order);
+    }
+
+    // Данный метод позволяет обновить информацию о заказе - Доставляется
+    @Transactional
+    public void updateOrderStatus2(Order order){
+        order.setStatus(Status.Доставляется);
+        orderRepository.save(order);
+    }
+
+    // Данный метод позволяет обновить информацию о заказе - Исполнен
+    @Transactional
+    public void updateOrderStatus3(Order order){
+        order.setStatus(Status.Исполнен);
+        orderRepository.save(order);
+    }
+
     // Данный метод позволяет обновить информацию о заказе - Отменен
     @Transactional
     public void updateOrderCancel(Order order){

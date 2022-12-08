@@ -264,6 +264,42 @@ public class AdminController {
     }
 
 
+    // Метод возвращает страницу с подробной информацией о заказе
+    @GetMapping("/order/info/{id}")
+    public String infoOrder(@PathVariable("id") int id, Model model){
+        model.addAttribute("order", orderService.getOrderById(id));
+//        model.addAttribute("person", personService.getPersonById(id_person));
+        return "admin/orderInfo";
+    }
+
+    @PostMapping("/orders/status1/{id}")
+    public String editOrderStatus1(@ModelAttribute("editOrder") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderStatus1(order_status);
+        return "redirect:/admin/order/info/{id}";
+    }
+
+    @PostMapping("/orders/status2/{id}")
+    public String editOrderStatus2(@ModelAttribute("editOrder") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderStatus2(order_status);
+        return "redirect:/admin/order/info/{id}";
+    }
+
+    @PostMapping("/orders/status3/{id}")
+    public String editOrderStatus3(@ModelAttribute("editOrder") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderStatus3(order_status);
+        return "redirect:/admin/order/info/{id}";
+    }
+
+    @PostMapping("/orders/cancel/{id}")
+    public String editOrderCancel(@ModelAttribute("editOrder") Order order, @PathVariable("id") int id){
+        Order order_status = orderService.getOrderById(id);
+        orderService.updateOrderCancel(order_status);
+        return "redirect:/admin/order/info/{id}";
+    }
+
 
 
 
