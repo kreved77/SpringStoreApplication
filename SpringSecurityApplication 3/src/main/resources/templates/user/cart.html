@@ -23,7 +23,7 @@
     <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
     <br>
     <br>
-    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+    <a th:href="@{/user/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
     <a th:href="@{/cart/delete/{id}(id=${product.getId()})}">Удалить</a>
 </div>
