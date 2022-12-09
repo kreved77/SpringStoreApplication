@@ -100,6 +100,7 @@ public class UserController {
         }
 
         model.addAttribute("price", price);
+//        model.addAttribute("text_to_order", text_to_order);
         model.addAttribute("cart_product", productList);
         return "user/cart";
     }
@@ -125,8 +126,31 @@ public class UserController {
 //        return "redirect:/product";
 //    }
 
-    @GetMapping("/order/create")
-    public String createOrder(){
+    // Создание заказа без поля "Комментарий к заказу" в шаблоне, по ссылке <a href="/order/create">Оформить заказ</a>
+//    @GetMapping("/order/create")
+//    public String createOrder(){
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
+//        int id_person = personDetails.getPerson().getId();
+//        List<Cart> cartList = cartRepository.findByPersonId(id_person);
+//        List<Product> productList = new ArrayList<>();
+//        for (Cart cart: cartList) {
+//            productList.add(productService.getProductId(cart.getProductId()));
+//        }
+//
+//        String uuid = UUID.randomUUID().toString();
+//
+//        for (Product product: productList) {
+//            Order newOrder = new Order(uuid, 1, product.getPrice(), Status.Обрабатывается, product, personDetails.getPerson());
+//            orderRepository.save(newOrder);
+//            cartRepository.deleteCartById(product.getId(), id_person);
+//        }
+//        return "redirect:/orders";
+//    }
+
+    // Создание заказа с полем "Комментарий к заказу" в шаблоне (form method="POST" + type="submit")
+    @PostMapping("/order/create")
+    public String createOrder(@RequestParam(value = "textorder", required = false, defaultValue = "") String text_to_order){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
         int id_person = personDetails.getPerson().getId();
@@ -136,10 +160,11 @@ public class UserController {
             productList.add(productService.getProductId(cart.getProductId()));
         }
 
-        String uuid = UUID.randomUUID().toString();
+//        String uuid = UUID.randomUUID().toString();
+        String uuid = UUID.randomUUID().toString().replace("-","").substring(0,8);
 
         for (Product product: productList) {
-            Order newOrder = new Order(uuid, 1, product.getPrice(), Status.Обрабатывается, product, personDetails.getPerson());
+            Order newOrder = new Order(uuid, 1, product.getPrice(), com.example.springsecurityapplication.enumm.Status.values()[0], text_to_order, product, personDetails.getPerson());
             orderRepository.save(newOrder);
             cartRepository.deleteCartById(product.getId(), id_person);
         }

@@ -17,20 +17,23 @@
         <form method="POST" th:action="@{/admin/orders/status1/{id}(id=${order.getId()})}">
             <button type="submit" th:disabled="${
             (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[1])
+            or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[2])
             or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[3])
             or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4])
              ? true : false}" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[1]}"></button>
         </form>
         <form method="POST" th:action="@{/admin/orders/status2/{id}(id=${order.getId()})}">
             <button type="submit" th:disabled="${
-            (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[2])
+            (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[0])
+            or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[2])
             or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[3])
             or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4])
              ? true : false}" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[2]}"></button>
         </form>
         <form method="POST" th:action="@{/admin/orders/status3/{id}(id=${order.getId()})}">
             <button type="submit" th:disabled="${
-            (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[3])
+            (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[0])
+            or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[3])
             or (order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4])
              ? true : false}" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[3]}"></button>
         </form>
@@ -55,12 +58,17 @@
         <p th:text="'Фамилия: ' + ${order.getPerson().getLastname()}"></p>
         <p th:text="'Email: ' + ${order.getPerson().getEmail()}"></p>
         <p th:text="'Номер телефона: ' + ${order.getPerson().getPhoneNumber()}"></p>
-        <p th:text="'Покупатель: ' + ${order.getPerson().getLogin()}"></p>
         <a th:href="@{/admin/person/info/{id}(id=${order.getPerson().getId()})}" th:text="'(открыть карточку пользователя: ' + ${order.getPerson().getLogin()} + ')'"></a>
+        <hr>
+
+        <h4>Комментарий покупателя: </h4>
+        <textarea th:text="${order.getTextDetails()}"  cols="100" rows="6" readonly disabled></textarea>
         <hr>
     <hr>
     <a href="/admin/orders">Назад ко всем заказам</a>
+        <span> | </span>
     <a href="/admin/person">Назад ко всем пользователям</a>
+        <span> | </span>
     <a href="/index">Назад в Главное меню</a>
 </body>
 </html>

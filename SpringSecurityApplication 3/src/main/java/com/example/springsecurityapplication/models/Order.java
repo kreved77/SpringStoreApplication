@@ -22,6 +22,8 @@ public class Order {
 
     private Status status;
 
+    private String textDetails;
+
     @ManyToOne(optional = false)
     private Product product;
 
@@ -97,11 +99,20 @@ public class Order {
         this.person = person;
     }
 
-    public Order(String number, int count, float price, Status status, Product product, Person person) {
+    public String getTextDetails() {
+        return textDetails;
+    }
+
+    public void setTextDetails(String textDetails) {
+        this.textDetails = textDetails;
+    }
+
+    public Order(String number, int count, float price, Status status, String textDetails, Product product, Person person) {
         this.number = number;
         this.count = count;
         this.price = price;
         this.status = status;
+        this.textDetails = textDetails;
         this.product = product;
         this.person = person;
     }

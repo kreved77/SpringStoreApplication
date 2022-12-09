@@ -14,8 +14,22 @@
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
     <a th:href="@{/cart/delete/{id}(id=${product.getId()})}">Удалить</a>
 </div>
-<h3 th:text="'Итоговая цена: ' + ${price}"></h3>
-<a href="/order/create">Оформить заказ</a>
+<!--<h3 th:text="'Итоговая цена: ' + ${price}"></h3>-->
+<h3 th:text="${cart_product.isEmpty() ? 'Ваша корзина пуста.' : 'Итоговая цена: ' + price}"></h3>
+
+<form method="POST" th:action="@{/order/create}">
+    <label for="text_to_order">Комментарий к заказу: </label>
+    <br>
+    <textarea name="textorder" th:value="*{textorder}" placeholder="Комментарий" id="text_to_order" cols="100" rows="6"></textarea>
+    <br>
+
+<!--    <button type="submit" text="Оформить заказ"></button>-->
+    <input type="submit" value="Оформить заказ"  th:disabled="${cart_product.isEmpty() ? true : false}">
+</form>
+
+<br>
+<hr/>
+<!--<a href="/order/create">Оформить заказ</a>-->
 <a href="/index">Назад ко всем товарам</a>
 </body>
 </html>
