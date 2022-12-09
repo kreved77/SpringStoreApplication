@@ -15,5 +15,15 @@
         <img th:src="'/img/' + ${img.getFileName()}" width="300px">
     </div>
     <a href="/product">Назад ко всем товарам</a>
+
+<!--    <form th:method="POST" th:action="@{/product/search}">-->
+<!--        <div>-->
+<!--            <label for="search">Поиск по наименованию</label>-->
+<!--            <input type="search" name="search"  th:value="*{value_search}" id="search">-->
+<!--            <input type="text" name="ot" value="1" id="ot" hidden>-->
+<!--            <input type="text" name="do" value="9999999" id="do" hidden>-->
+<!--            <input type="submit" value="Найти">-->
+<!--        </div>-->
+<!--    </form>-->
 </body>
 </html>

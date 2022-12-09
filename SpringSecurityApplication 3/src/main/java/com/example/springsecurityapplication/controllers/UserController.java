@@ -56,6 +56,7 @@ public class UserController {
 
         // Преобразовываем объект аутентификации в специальный объект класса по работе с пользователями
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
+        System.out.println("person == anonymousUser ? " + (authentication.getPrincipal() == "anonymousUser"));
 
         String role = personDetails.getPerson().getRole();
 

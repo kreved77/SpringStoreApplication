@@ -5,6 +5,19 @@
     <title>Корзина</title>
 </head>
 <body>
+
+<header>
+    <div class="search-bar-section" id="search-bar-section">
+        <form th:method="POST" th:action="@{/search}">
+            <label for="search-bar">Поиск по наименованию</label>
+            <input type="search" name="search"  th:value="*{value_search}" id="search-bar">
+            <input type="text" name="ot" value="1" id="ot" hidden>
+            <input type="text" name="do" value="9999999" id="do" hidden>
+            <input type="submit" value="Найти">
+        </form>
+    </div>
+</header>
+
 <h3>Корзина товаров</h3>
 <div th:each="product : ${cart_product}">
     <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
