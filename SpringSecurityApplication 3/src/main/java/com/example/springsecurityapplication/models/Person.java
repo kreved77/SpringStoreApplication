@@ -44,7 +44,7 @@ public class Person {
     private String email;
 
     @NotEmpty(message = "Номер телефона не может быть пустым")
-    @Pattern(regexp = "^((\\+7|7|8)+([0-9]){10})$", message = "Норме телефона должен быть в формате +7/7/89159058431")
+    @Pattern(regexp = "^((\\+7|7|8)+([0-9]){10})$", message = "Норме телефона должен быть в формате +7/7/89991112233")
     @Column(name = "phoneNumber", length = 12, nullable = false, unique = true, columnDefinition = "text")
     private String phoneNumber;
 
