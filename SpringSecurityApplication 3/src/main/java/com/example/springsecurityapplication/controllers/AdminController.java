@@ -1,5 +1,6 @@
 package com.example.springsecurityapplication.controllers;
 
+import com.example.springsecurityapplication.enumm.Status;
 import com.example.springsecurityapplication.models.Image;
 import com.example.springsecurityapplication.models.Order;
 import com.example.springsecurityapplication.models.Person;
@@ -239,13 +240,27 @@ public class AdminController {
 
 
     @GetMapping("/orders")
-    public String ordersAdmin(Model model){
-        List<Order> orderList = orderService.getAllOrders();
-        model.addAttribute("orders", orderList);
+    public String ordersAdmin(@RequestParam(value = "status", required = false, defaultValue = "all") String status, Model model){
+        if (status.equals("status0")) {
+            model.addAttribute("orders", orderRepository.findAllByStatusEquals(Status.Принят));
+        } else if (status.equals("status1")) {
+            model.addAttribute("orders", orderRepository.findAllByStatusEquals(Status.Обрабатывается));
+        } else if (status.equals("status2")) {
+            model.addAttribute("orders", orderRepository.findAllByStatusEquals(Status.Доставляется));
+        } else if (status.equals("status3")) {
+            model.addAttribute("orders", orderRepository.findAllByStatusEquals(Status.Исполнен));
+        } else if (status.equals("status4")) {
+            model.addAttribute("orders", orderRepository.findAllByStatusEquals(Status.Отменен));
+        } else {
+            model.addAttribute("orders", orderService.getAllOrders());
+        }
+
+//        List<Order> orderList = orderService.getAllOrders();
+//        model.addAttribute("orders", orderList);
 
 //   VER 2 - MapList
-        Map<String, List<Order>> orderMapList = orderList.stream().collect(Collectors.groupingBy(Order::getNumber));
-        model.addAttribute("ordersMap", orderMapList);
+//        Map<String, List<Order>> orderMapList = orderList.stream().collect(Collectors.groupingBy(Order::getNumber));
+//        model.addAttribute("ordersMap", orderMapList);
 
         return "/admin/orders";
     }

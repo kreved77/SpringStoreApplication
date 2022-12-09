@@ -19,24 +19,49 @@
     <button type="submit">Поиск</button>
 </form>
 
-<h3>Результат поиска</h3>
+<h4>Результат поиска:</h4>
+<!--<h4 th:text="${search_order.isEmpty() ? '' : 'Результат поиска:'}"></h4>-->
+<hr>
 <div th:each="order : ${search_order}">
-    <p th:text="'id=' + ${order.getId()}"></p>
-    <p th:text="'DateTime: ' + ${order.getDateTime()}"></p>
-<!--    <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="300px">-->
-    <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
-    <p th:text="'Количество: ' + ${order.getCount()}"></p>
-    <p th:text="'Цена: ' + ${order.getPrice()}"></p>
-<!--    <p th:text="'Покупатель: ' + ${order.getPerson().getLogin()}"></p>-->
-    <p>Покупатель:  <a th:href="@{/admin/person/info/{id}(id=${order.getPerson().getId()})}" th:text="${order.getPerson().getLogin()}"></a></p>
-    <p th:text="'Заказ № ' + ${order.getNumber()}"></p>
-    <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
+    <p> <a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="'Заказ № ' + ${order.getNumber()}"></a></p>
     <p th:text="'Статус: ' + ${order.getStatus()}"></p>
-<!--    <a th:href="@{/admin/person/edit/{id}(id=${person.getId()})}">Редактировать пользователя</a>-->
+    <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd MMMM yyyy')}"></p>
+    <p>Покупатель:  <a th:href="@{/admin/person/info/{id}(id=${order.getPerson().getId()})}" th:text="${order.getPerson().getLogin()}"></a></p>
     <hr>
 </div>
-<hr>
 
+<form method="GET" th:action="@{/admin/orders}">
+<fieldset>
+    <legend>Фильтрация заказов по статусу: </legend>
+    <div>
+        <input type="radio" id="all" name="status" value="all" checked>
+        <label for="all">Все заказы</label>
+    </div>
+    <div>
+        <input type="radio" id="status0" name="status" value="status0">
+        <label for="status0" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[0]}"/>
+    </div>
+    <div>
+        <input type="radio" id="status1" name="status" value="status1">
+        <label for="status1" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[1]}"/>
+    </div>
+    <div>
+        <input type="radio" id="status2" name="status" value="status2">
+        <label for="status2" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[2]}"/>
+    </div>
+    <div>
+        <input type="radio" id="status3" name="status" value="status3">
+        <label for="status3" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[3]}"/>
+    </div>
+    <div>
+        <input type="radio" id="status4" name="status" value="status4">
+        <label for="status4" th:text="${T(com.example.springsecurityapplication.enumm.Status).values()[4]}"/>
+    </div>
+</fieldset>
+    <button type="submit">Применить</button>
+</form>
+
+<br>
 <h3>Все заказы: </h3>
     <table>
         <thead>
@@ -78,11 +103,11 @@
 
 </tr>
 </tr>
-<h3>VER 2</h3>
-<div th:each="currentOrderRow, wholeOrder : ${ordersMap}" class="order-body">
-    <span class="order-identifier" th:text="'Идентификатор заказа: ' + ${currentOrderRow.getKey()}"></span>
-    <span class="order-status" th:text="${currentOrderRow.getValue().toArray()[0].getStatus()}"></span>
-</div>
+<!--<h3>VER 2</h3>-->
+<!--<div th:each="currentOrderRow, wholeOrder : ${ordersMap}" class="order-body">-->
+<!--    <span class="order-identifier" th:text="'Идентификатор заказа: ' + ${currentOrderRow.getKey()}"></span>-->
+<!--    <span class="order-status" th:text="${currentOrderRow.getValue().toArray()[0].getStatus()}"></span>-->
+<!--</div>-->
 
 <hr>
 <a href="/index">Назад в Главное меню</a>
