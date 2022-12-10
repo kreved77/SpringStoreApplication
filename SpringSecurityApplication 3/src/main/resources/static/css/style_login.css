@@ -9,12 +9,27 @@
     font-family: 'Poppins', sans-serif;
 }
 
+#parallax {
+    overflow-x:hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://res.cloudinary.com/dl3ieqmbe/image/upload/v1482006565/circ_c6sp1e.png), url(https://res.cloudinary.com/dl3ieqmbe/image/upload/v1482006565/rho_m9rz6o.png), url(https://res.cloudinary.com/dl3ieqmbe/image/upload/v1482006565/tri_z3oblp.png),
+    linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position: 50% 50%;
+    backdrop-filter: blur(2px);
+}
+
 body {
     /*background: #ecf0f3;*/
-    background-color: #FF3CAC;
-    background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
-    background-repeat: no-repeat;
-    background-size: 100% 200%;
+    /*background-color: #FF3CAC;*/
+    /*background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 100% 200%;*/
+    /*background-size: 100% 200%;*/
+    background-size: auto 200%;
 
 }
 
@@ -73,6 +88,7 @@ input::placeholder {
     font-weight: lighter;
     font-style: italic;
     opacity: .8;
+    font-size: 0.8em;
 }
 
 .wrapper .form-field {
