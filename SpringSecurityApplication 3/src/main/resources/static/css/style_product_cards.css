@@ -31,7 +31,8 @@
    word-wrap: break-word;
    background-color: #fff;
    background-clip: border-box;
-   border: 1px solid rgba(0,0,0,.125);
+   /*border: 1px solid rgba(0,0,0,.125);*/
+   border: 2px solid orange;
    border-radius: .1875rem;
 }
 
@@ -46,7 +47,7 @@
 }
 
 .card-img{
-
+   border-radius: 40px;
    width: 350px;
 }
 
@@ -55,13 +56,15 @@
 }
 
 .bg-cart {
-   background-color:orange;
+   background-color: orange;
+   border: 2px solid gold;
    color:#fff;
 }
 
 .bg-cart:hover {
-   
-   color:#fff;
+   background-color: #12b193;
+   border: 2px solid #95f6e4;
+   color: white;
 }
 
 .bg-buy {
