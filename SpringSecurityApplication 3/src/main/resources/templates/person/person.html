@@ -2,14 +2,66 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Пользователи</title>
+    <title>Админ панель. Пользователи</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link th:href="@{/img/icon/icon.png}" rel="icon" >
     <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/style_product_cards.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/style_filter.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
 
-<h3>Список пользователей: </h3>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 col-sm-3 col-3 logo">
+                <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-3 col-sm-9 col-9 text-center text-md-start">
+                <h1>EnjoyKid</h1>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/index">Главное меню админа</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/index">Все товары</a>
+                <hr/>
+                <a href="/admin/product/add">Новый товар</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/admin/person">Пользователи</a>
+                <hr/>
+                <a href="/admin/orders">Все Заказы</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <form method="get" th:action="@{/auth/password/changepersonal}">
+                    <input type="submit" value="Изменить пароль" class="button-input-small">
+                </form>
+                <form method="post" th:action="@{/logout}">
+                    <input type="submit" value="Выйти из кабинета" class="button-input-small">
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<h2>Кабинет администратора. Пользователи</h2>
+<a href="/admin/person/sorting_and_searching_and_filters"><button class="button-link">Поиск, сортировка, фильтрация пользователей</button></a>
+<br/>
+<a href="/admin/password/change"><button class="button-link">СБРОС пароля любому пользователю (по Логину)</button></a>
+<!--<a href="/admin/person/sorting_and_searching_and_filters">Поиск, сортировка, фильтрация</a>-->
+<!--<hr>-->
+<!--<a href="/admin/password/change">!!! Изменить пароль любому пользователю (по Логину) !!! </a>-->
+<hr>
+<h3 id="person-all">Список пользователей: </h3>
 
     <table>
         <thead>
@@ -58,14 +110,11 @@
 <!--<div th:each="element : ${person}">-->
 <!--    <a th:href="@{/admin/person/info/{id}(id=${element.getId()})}" th:text="${element.getLogin()}"></a>-->
 <!--</div>-->
-<hr>
-<a href="/admin/person/sorting_and_searching_and_filters">Поиск, сортировка, фильтрация</a>
-<hr>
-<a href="/admin/password/change">!!! Изменить пароль любому пользователю (по Логину) !!! </a>
-<hr>
+<!--<hr>-->
+<!--<a href="/admin/person/sorting_and_searching_and_filters">Поиск, сортировка, фильтрация</a>-->
+<!--<hr>-->
+<!--<a href="/admin/password/change">!!! Изменить пароль любому пользователю (по Логину) !!! </a>-->
+<!--<hr>-->
 <a href="/index">Назад в Главное меню</a>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script th:src="@{/js/index.js}"></script>
 </body>
 </html>
