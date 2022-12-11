@@ -4,4 +4,11 @@ PostgreSQL 14
 on Dec 11, 2022
 
 
+ЛОГИНЫ и ПАРОЛИ
+Admin !QAZ2wsx
+User1 User1!23
+zzzzz !Q1q1q1q
+qqqqq !QAZ2wsx
+
+
  --host "localhost" --port "5432" --username "postgres" --no-password --verbose --format=p --inserts --column-inserts "db_shop"
