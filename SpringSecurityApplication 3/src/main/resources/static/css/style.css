@@ -15,8 +15,8 @@ body{
  }
 header{
     background-color: #261f70;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 footer{
     background-color: #261f70;
@@ -25,9 +25,31 @@ footer{
     position: relative;
     overflow: hidden;
     margin-top: 50px;
+    color: white;
 }
+footer .push {
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.logo {
+    width: 80px;
+    margin: auto 5px;
+}
+
+.logo img {
+    /*width: 100%;*/
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px #5f5f5f,
+    0px 0px 0px 5px #ecf0f3,
+    8px 8px 15px #2B86C5,
+    -8px -8px 15px #FF3CAC;
+}
+
 header a{
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
 }
 header a{
     color: #fdf5ee;
@@ -64,12 +86,12 @@ h1{
     font-weight: 700;
     /*font-size: 1.4em;*/
     color: #fdf5ee;
-    line-height: 60px;
-    letter-spacing: 10px;
+    line-height: 100px;
+    letter-spacing: 3px;
 }
 h2{
     font-weight: 600;
-    line-height: 100px;
+    line-height: 80px;
     /*font-size: 46px;*/
 }
 h3{
