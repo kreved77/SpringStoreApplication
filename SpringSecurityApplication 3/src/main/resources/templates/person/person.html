@@ -29,17 +29,13 @@
                 <h1>EnjoyKid</h1>
             </div>
             <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
-                <a href="/index">Главное меню админа</a>
+                <a href="/index">Товары</a>
             </div>
             <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
-                <a href="/index">Все товары</a>
-                <hr/>
-                <a href="/admin/product/add">Новый товар</a>
+                <a href="/admin/orders">Заказы</a>
             </div>
             <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
                 <a href="/admin/person">Пользователи</a>
-                <hr/>
-                <a href="/admin/orders">Все Заказы</a>
             </div>
             <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
                 <form method="get" th:action="@{/auth/password/changepersonal}">
@@ -97,7 +93,7 @@
                     </select>
                 </td>
                 <td>
-                    <button type="submit">Изменить</button>
+                    <button type="submit">Применить</button>
                 </td>
             </tr>
 
@@ -114,7 +110,7 @@
 <!--<a href="/admin/person/sorting_and_searching_and_filters">Поиск, сортировка, фильтрация</a>-->
 <!--<hr>-->
 <!--<a href="/admin/password/change">!!! Изменить пароль любому пользователю (по Логину) !!! </a>-->
-<!--<hr>-->
+<hr>
 <a href="/index">Назад в Главное меню</a>
 </body>
 </html>
