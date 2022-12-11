@@ -93,8 +93,10 @@ public class AdminController {
 
     // Метод по добавлению объекта с формы в таблицу product
     @PostMapping("/product/add")
-    public String addProduct(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult, @RequestParam("file_one") MultipartFile file_one, @RequestParam("file_two") MultipartFile file_two, @RequestParam("file_three") MultipartFile file_three, @RequestParam("file_four") MultipartFile file_four, @RequestParam("file_five") MultipartFile file_five) throws IOException {
+    public String addProduct(@ModelAttribute("product") @Valid Product product, BindingResult bindingResult, @RequestParam("file_one") MultipartFile file_one, @RequestParam("file_two") MultipartFile file_two, @RequestParam("file_three") MultipartFile file_three, @RequestParam("file_four") MultipartFile file_four, @RequestParam("file_five") MultipartFile file_five, Model model) throws IOException {
 
+        model.addAttribute("category", categoryRepository.findAll());
+        model.addAttribute("product", product);
         productValidator.validate(product, bindingResult);
         if(bindingResult.hasErrors()){
             return "product/addProduct";
