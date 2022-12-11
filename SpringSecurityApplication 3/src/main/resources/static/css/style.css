@@ -17,6 +17,7 @@ header{
     background-color: #261f70;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-bottom: 2px solid #95f6e4;
 }
 footer{
     background-color: #261f70;
@@ -26,6 +27,7 @@ footer{
     overflow: hidden;
     margin-top: 50px;
     color: white;
+    border-top: 2px solid #95f6e4;
 }
 footer .push {
     justify-content: flex-end;
@@ -48,10 +50,12 @@ footer .push {
     -8px -8px 15px #FF3CAC;
 }
 
-header a{
+header a,
+footer a{
     letter-spacing: 0.1em;
 }
-header a{
+header a,
+footer a{
     color: #fdf5ee;
     align-self: center;
     font-size: 20px;
@@ -60,10 +64,17 @@ header a{
     /*color: brown;*/
 }
 
-header a:hover{
+header a:hover,
+footer a:hover{
     color: #95f6e4;
     padding: 5px;
     border-bottom: 2px solid #95f6e4;
+}
+
+hr{
+    color: #95f6e4;
+    /*padding: 5px;*/
+    /*border-bottom: 2px solid #95f6e4;*/
 }
 .h-style{
     text-transform:  uppercase;
@@ -79,6 +90,13 @@ h1, h2, h3, h4, h5,
     letter-spacing: 0px;
     /*text-transform:  uppercase;*/
     text-align: center!important;
+}
+
+.ta-s {
+    text-align: start!important;
+}
+.ta-j {
+    text-align: justify!important;
 }
 
 h1{

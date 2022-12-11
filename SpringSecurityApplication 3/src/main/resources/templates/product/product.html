@@ -187,7 +187,8 @@
 
 
 <h3>Результат: </h3>
-<div class="container d-flex justify-content-center mt-50 mb-50">
+<!--<div class="container d-flex justify-content-center mt-50 mb-50">-->
+<div class="container justify-content-center mt-10 mb-10">
     <div class="row">
 
         <div class="col-md-4 col-sm-6 mt-2" th:each="product : ${search_product}">
@@ -229,7 +230,8 @@
 <hr>
 
 <h3>Доступные товары: </h3>
-<div class="container d-flex justify-content-center mt-50 mb-50">
+<!--<div class="container d-flex justify-content-center mt-50 mb-50">-->
+<div class="container d-flex justify-content-center mt-10 mb-10">
     <div class="row">
 
         <div class="col-md-4 mt-2" th:each="product : ${products}">
@@ -269,15 +271,24 @@
     </div>
 </div>
 
+
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-sm-6 col-6 text-center push">
-                <h2 class="mt-0 mb-0">EnjoyKid</h2>
-                <p>Официальный поставщик.</p>
+            <div class="col-md-4 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Адрес:</h3>
+                <p>128784, г. Москва, наб. Молодцова, 5</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Телефон:</h3>
+                <a href="tel:+74951234555" style="font-size: 1rem;">+7 (495) 123-45-55</a>
             </div>
             <div class="col-md-3 col-sm-6 col-6 logo ">
                 <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6 col-6 text-center push">
+                <h2 class="mt-0 mb-0">EnjoyKid</h2>
+                <p>Официальный поставщик.</p>
             </div>
         </div>
     </div>
