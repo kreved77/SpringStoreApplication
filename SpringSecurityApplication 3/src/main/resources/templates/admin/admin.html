@@ -21,7 +21,13 @@
 <h3>Каталог товаров: </h3>
 <hr>
 <div th:each="product : ${products}">
-    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+<!--    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">-->
+    <div>
+        <span th:each="img : ${product.getImageList()}">
+            <img th:src="'/img/' + ${img.getFileName()}" width="150px">
+        </span>
+    </div>
+    <p th:text="'Дата последнего изменения: ' + ${product.getDateTimeOfCreated()}"></p>
     <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
     <p th:text="'Описание: ' + ${product.getDescription()}"></p>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>

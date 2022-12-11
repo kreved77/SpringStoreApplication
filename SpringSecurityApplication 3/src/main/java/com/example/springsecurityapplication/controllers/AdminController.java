@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -121,7 +122,7 @@ public class AdminController {
         }
 
         // Проверка на пустоту файла
-        if(file_two != null){
+        if(!file_two.isEmpty()){
             // Дирректория по сохранению файла
             File uploadDir = new File(uploadPath);
             // Если данной дирректории по пути не сущетсвует
@@ -143,7 +144,7 @@ public class AdminController {
         }
 
         // Проверка на пустоту файла
-        if(file_three != null){
+        if(!file_three.isEmpty()){
             // Дирректория по сохранению файла
             File uploadDir = new File(uploadPath);
             // Если данной дирректории по пути не сущетсвует
@@ -165,7 +166,7 @@ public class AdminController {
         }
 
         // Проверка на пустоту файла
-        if(file_four != null){
+        if(!file_four.isEmpty()){
             // Дирректория по сохранению файла
             File uploadDir = new File(uploadPath);
             // Если данной дирректории по пути не сущетсвует
@@ -187,7 +188,7 @@ public class AdminController {
         }
 
         // Проверка на пустоту файла
-        if(file_five != null){
+        if(!file_five.isEmpty()){
             // Дирректория по сохранению файла
             File uploadDir = new File(uploadPath);
             // Если данной дирректории по пути не сущетсвует
@@ -229,6 +230,7 @@ public class AdminController {
 
     @PostMapping("/product/edit/{id}")
     public String editProduct(@ModelAttribute("editProduct") Product product, @PathVariable("id") int id){
+        product.setDateTimeOfCreated(LocalDateTime.now());
         productService.updateProduct(id, product);
         return "redirect:/admin";
     }
