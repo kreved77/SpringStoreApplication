@@ -40,6 +40,19 @@ public class MainController {
         System.out.println(Do);
         System.out.println(price);
         System.out.println(category);
+        if(search.isEmpty()) {
+            search = "";
+        }
+        if(ot.isEmpty()) {
+            ot = String.valueOf(1);
+        } else{
+            model.addAttribute("value_price_ot", ot);
+        }
+        if(Do.isEmpty()) {
+            Do = String.valueOf(999999);
+        } else{
+            model.addAttribute("value_price_do", Do);
+        }
         // Если диапазон цен от и до не пустой
         if(!ot.isEmpty() & !Do.isEmpty()) {
             // Если сортировка по цене выбрана
@@ -92,8 +105,8 @@ public class MainController {
             model.addAttribute("search_product",productRepository.findByTitleContainingIgnoreCase(search));
         }
         model.addAttribute("value_search", search);
-        model.addAttribute("value_price_ot", ot);
-        model.addAttribute("value_price_do", Do);
+//        model.addAttribute("value_price_ot", ot);
+//        model.addAttribute("value_price_do", Do);
         model.addAttribute("products", productService.getAllProduct());
         return "/product/product";
     }
