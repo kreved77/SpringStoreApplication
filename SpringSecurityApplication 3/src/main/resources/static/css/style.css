@@ -5,8 +5,8 @@ html {
 }
 body{
     background-color: #2196F3;
-    background-image: url("../images/bg.jpg");
-    background-repeat: no-repeat;
+    background-image: url("../images/bg-rev.jpg");
+    background-repeat: repeat-y;
     background-size: 100% 100%;
     font-family: "Comfortaa", Arial, sans-serif;
     /*font-family: "Poppins", Arial, sans-serif;*/
@@ -73,8 +73,12 @@ footer a:hover{
 
 hr{
     color: #95f6e4;
+    /*color: #95f6e4;*/
     /*padding: 5px;*/
-    /*border-bottom: 2px solid #95f6e4;*/
+    border-bottom: 1px solid #95f6e4;
+    border-top: 1px solid #FF3CAC;
+    box-shadow: 0px 0px 4px #2B86C5, 0px 0px 4px #FF3CAC;
+
 }
 .h-style{
     text-transform:  uppercase;
@@ -134,7 +138,8 @@ input::placeholder {
     font-size: 0.8em;
 }
 
-.button-input{
+.button-input,
+.button-link{
     background-color: rgba(255, 255, 255, 0.9);
     padding: 5px 15px;
     border-radius: 6px;
@@ -152,7 +157,8 @@ input::placeholder {
     min-width: 220px;
 }
 .button-input:hover,
-.button-input-small:hover{
+.button-input-small:hover,
+.button-link:hover{
     background-color: #12b193;
     border: 2px solid #95f6e4;
     color: white;
