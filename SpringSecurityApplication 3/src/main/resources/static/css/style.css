@@ -1,13 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
 html {
     height: 100%
 }
-
-body {
+body{
+    background-color: #2196F3;
     background-image: url("../images/bg.jpg");
-     background-repeat: no-repeat;
-     background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    font-family: "Comfortaa", Arial, sans-serif;
+    /*font-family: "Poppins", Arial, sans-serif;*/
+    margin: 0;
+    text-align: left;
  }
-a{
+header{
+    background-color: #261f70;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+footer{
+    background-color: #261f70;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 50px;
+}
+header a{
+    letter-spacing: 0.2em;
+}
+header a{
+    color: #fdf5ee;
+    align-self: center;
+    font-size: 20px;
+    padding: 5px;
     text-decoration: none;
-    color: brown;
+    /*color: brown;*/
+}
+
+header a:hover{
+    color: #95f6e4;
+    padding: 5px;
+    border-bottom: 2px solid #95f6e4;
+}
+.h-style{
+    text-transform:  uppercase;
+    padding: 5px;
+    border-bottom: 2px solid red;
+}
+
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+    line-height: 1.5;
+    font-weight: 500;
+    /*font-family: "Poppins", Arial, sans-serif;*/
+    letter-spacing: 0px;
+    /*text-transform:  uppercase;*/
+    text-align: center!important;
+}
+
+h1{
+    /*font-family: 'Major Mono Display', sans-serif;*/
+    font-weight: 700;
+    /*font-size: 1.4em;*/
+    color: #fdf5ee;
+    line-height: 60px;
+    letter-spacing: 10px;
+}
+h2{
+    font-weight: 600;
+    line-height: 100px;
+    /*font-size: 46px;*/
+}
+h3{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 22px;
+}
+h4{
+    line-height: 30px;
+    border-bottom: 1px dotted black;
+}
+.row{
+    /*padding: 10px;*/
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+input::placeholder {
+    font-weight: lighter;
+    font-style: italic;
+    opacity: .8;
+    font-size: 0.8em;
+}
+
+.button-input{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 15px;
+    border-radius: 6px;
+    border: 2px solid #c5cac7 ;
+    font-size: 22px;
+    min-width: 360px;
+}
+.button-input-small{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2px 2px;
+    margin: 2px 0px;
+    border-radius: 6px;
+    border: 2px solid #c5cac7 ;
+    font-size: 18px;
+    min-width: 220px;
+}
+.button-input:hover,
+.button-input-small:hover{
+    background-color: #12b193;
+    border: 2px solid #95f6e4;
+    color: white;
+    /*text-decoration: underline;*/
 }
