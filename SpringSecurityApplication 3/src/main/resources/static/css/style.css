@@ -29,9 +29,17 @@ footer{
     color: white;
     border-top: 2px solid #95f6e4;
 }
-footer .push {
+.push {
     justify-content: flex-end;
     margin-left: auto;
+}
+.anypush {
+    display: flex;
+    justify-content: end;
+}
+.anycenter {
+    display: flex;
+    justify-content: center;
 }
 
 .logo {

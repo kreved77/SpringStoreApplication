@@ -27,11 +27,8 @@
             <div class="col-md-3 col-sm-9 col-9 text-center text-md-start">
                 <h1>EnjoyKid</h1>
             </div>
-            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center ">
-                <a href="#"></a>
-            </div>
-            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
-                <a href="#"></a>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center push">
+                <a href="/product">Каталог</a>
             </div>
             <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
                 <a href="/auth/login">Авторизация</a>
@@ -169,9 +166,9 @@
             </div>
         </div>
 
-    </div>
-</section>
-</form>
+<!--    </div>-->
+<!--</section>-->
+<!--</form>-->
 
 <!--<h3>Результат: </h3>
 <div th:each="product : ${search_product}">
@@ -185,49 +182,50 @@
 
 
 
-
-<h3>Результат: </h3>
+<!--<h3>Результат: </h3>-->
 <!--<div class="container d-flex justify-content-center mt-50 mb-50">-->
-<div class="container justify-content-center mt-10 mb-10">
-    <div class="row">
+    <div class="container justify-content-center mt-10 mb-10">
+        <div class="row">
 
-        <div class="col-md-4 col-sm-6 mt-2" th:each="product : ${search_product}">
+            <div class="col-md-4 col-sm-6 mt-2" th:each="product : ${search_product}">
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-actions">
-                        <img th:src="'/img/' + ${product.imageList[0].getFileName()}" class="card-img img-fluid" width="96" height="350" alt="">
-                    </div>
-                </div>
-
-                <div class="card-body bg-light text-center">
-                    <div class="mb-2">
-                        <h5 class="font-weight-semibold mb-2">
-<!--                            <a th:href="@{/user/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}" id="titlesearch" class="text-default mb-2" data-abc="true"></a>-->
-                            <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}" id="titlesearch" class="text-default mb-2" data-abc="true"></a>
-                        </h5>
-                        <p th:text="${product.getCategory().getName()}" class="text-muted mb-0" data-abc="true"></p>
-                    </div>
-                    <div>
-                        <i class="fa fa-star star"></i>
-                        <i class="fa fa-star star"></i>
-                        <i class="fa fa-star star"></i>
-                        <i class="fa fa-star star"></i>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-img-actions">
+                            <img th:src="'/img/' + ${product.imageList[0].getFileName()}" class="card-img img-fluid" width="96" height="350" alt="">
+                        </div>
                     </div>
 
-                    <h4 class="mb-2 font-weight-semibold" th:text="'Цена: ' + ${product.getPrice()} + ' руб.'"></h4>
+                    <div class="card-body bg-light text-center">
+                        <div class="mb-2">
+                            <h5 class="font-weight-semibold mb-2">
+    <!--                            <a th:href="@{/user/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}" id="titlesearch" class="text-default mb-2" data-abc="true"></a>-->
+                                <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}" id="titlesearch" class="text-default mb-2" data-abc="true"></a>
+                            </h5>
+                            <p th:text="${product.getCategory().getName()}" class="text-muted mb-0" data-abc="true"></p>
+                        </div>
+                        <div>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                        </div>
 
-<!--                    <a th:href="@{/cart/add/{id}(id=${product.getId()})}">-->
-<!--                        <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Добавить в корзину</button>-->
-<!--                    </a>-->
+                        <h4 class="mb-2 font-weight-semibold" th:text="'Цена: ' + ${product.getPrice()} + ' руб.'"></h4>
 
+    <!--                    <a th:href="@{/cart/add/{id}(id=${product.getId()})}">-->
+    <!--                        <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Добавить в корзину</button>-->
+    <!--                    </a>-->
+
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
-<hr>
+    </div>
+</section>
+</form>
 
 <h3>Доступные товары: </h3>
 <!--<div class="container d-flex justify-content-center mt-50 mb-50">-->
