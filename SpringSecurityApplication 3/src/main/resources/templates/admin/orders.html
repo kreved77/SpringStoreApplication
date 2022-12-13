@@ -47,19 +47,20 @@
         </div>
     </div>
 </header>
+
+<div class="container bodysection">
 <h2>Кабинет администратора. Заказы</h2>
-
-
-<h4>Поиск по номеру заказа</h4>
+    <br>
+    <h4>Поиск по номеру заказа</h4>
+<div class="anycenter">
 <form method="post" th:action="@{/admin/orders/search}">
     <label for="findOrder">Введите последние 4 символа заказа:  </label>
     <input type="text"  th:value="*{search_value}" name="search_value" id="findOrder">
     <button type="submit">Поиск</button>
 </form>
-
-<h4>Результат поиска:</h4>
+</div>
+<h3>Результат поиска:</h3>
 <!--<h4 th:text="${search_order.isEmpty() ? '' : 'Результат поиска:'}"></h4>-->
-<hr>
 <div th:each="order : ${search_order}">
     <p> <a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="'Заказ № ' + ${order.getNumber()}"></a></p>
     <p th:text="'Статус: ' + ${order.getStatus()}"></p>
@@ -101,38 +102,38 @@
 
 <br>
 <h3 id="orders-all">Все заказы: </h3>
-    <table>
+    <table class="iksweb">
         <thead>
         <tr>
             <th>id</th>
             <th>Дата</th>
+            <th>Статус</th>
+            <th>Номер заказа</th>
             <th>Товар</th>
             <th>Количество</th>
             <th>Стоимость</th>
             <th>Покупатель</th>
-            <th>Номер заказа</th>
-            <th>Статус</th>
-            <th></th>
+<!--            <th></th>-->
         </tr>
         </thead>
         <tbody>
         <form method="GET" th:action="@{/admin/order/info/{id}(id=${order.getId()})}" th:each="order : ${orders}">
 
             <tr>
-                <td><a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="${order.getId()}"></a></td>
+                <td><a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="${order.getId()}" class="button-input-small button-input-small-ashover"></a></td>
 <!--                <td th:text="${order.getDateTime()}"></td>-->
                 <td th:text="${#temporals.format(order.getDateTime(), 'dd MMMM yyyy')}"></td>
+                <td th:text="${order.getStatus()}"></td>
+                <td><a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="${order.getNumber()}" class="button-input-small"></a></td>
+                <!--                <td th:text="${order.getNumber()}"></td>-->
 <!--                <td th:text="${order.getProduct().getTitle()}"></td>-->
                 <td><a th:href="@{/user/product/info/{id}(id=${order.getProduct().getId()})}" th:text="${order.getProduct().getTitle()}"></a></td>
-                <td th:text="${order.getCount()}"></td>
-                <td th:text="${order.getPrice()}"></td>
-                <td><a th:href="@{/admin/person/info/{id}(id=${order.getPerson().getId()})}" th:text="${order.getPerson().getLogin()}"></a></td>
-                <td><a th:href="@{/admin/order/info/{id}(id=${order.getId()})}" th:text="${order.getNumber()}"></a></td>
-<!--                <td th:text="${order.getNumber()}"></td>-->
-                <td th:text="${order.getStatus()}"></td>
-                <td>
-                    <button type="submit">Подробнее</button>
-                </td>
+                <td th:text="${order.getCount()} + ' шт.'"></td>
+                <td th:text="${order.getPrice()} + ' руб.'"></td>
+                <td><a th:href="@{/admin/person/info/{id}(id=${order.getPerson().getId()})}" th:text="${order.getPerson().getLogin()} + ' (данные)'"></a></td>
+<!--                <td>-->
+<!--                    <button type="submit">Подробнее</button>-->
+<!--                </td>-->
             </tr>
 
         </form>
@@ -147,10 +148,33 @@
 <!--    <span class="order-status" th:text="${currentOrderRow.getValue().toArray()[0].getStatus()}"></span>-->
 <!--</div>-->
 
-<hr>
-<a href="/index">Назад в Главное меню</a>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script th:src="@{/js/index.js}"></script>
+<!--<hr>-->
+<!--<a href="/index">Назад в Главное меню</a>-->
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Адрес:</h3>
+                <p>128784, г. Москва, наб. Молодцова, 5</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Телефон:</h3>
+                <a href="tel:+74951234555" style="font-size: 1rem;">+7 (495) 123-45-55</a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 logo ">
+                <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6 col-6 text-center push">
+                <h2 class="mt-0 mb-0">EnjoyKid</h2>
+                <p>Официальный поставщик.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"-->
+<!--        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>-->
+<!--<script th:src="@{/js/index.js}"></script>-->
 </body>
 </html>

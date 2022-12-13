@@ -49,6 +49,7 @@
   </div>
 </header>
 
+<div class="container bodysection">
 <h2>Кабинет администратора. Пользователи</h2>
 <h3>Редактирование пользователя</h3>
 <form method="POST" th:action="@{/admin/person/edit/{id}(id=${editPerson.getId()})}" th:object="${editPerson}">
@@ -88,8 +89,10 @@
   <input type="submit" value="Сохранить изменения">
 </form>
 <hr>
-<a href="/admin/person">Назад ко всем пользователям</a>
+<a href="/admin/person" class="button-input-small">Назад ко всем пользователям</a>
 <hr>
-<a href="/index">Назад в Главное меню</a>
+<a href="/index" class="button-input-small">Назад в Главное меню</a>
+</div>
+
 </body>
 </html>

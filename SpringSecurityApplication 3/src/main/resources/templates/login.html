@@ -37,10 +37,10 @@
 <!--        <button class="btn mt-3">Login</button>-->
         <input class="btn mt-3" type="submit" value="Войти">
 
-        <div th:if="${param.error}" style="color: red" class="text-center fs-6">
+        <div th:if="${param.error}" style="color: red; text-decoration: underline;" class="text-center fs-6">
             Введен неправильный логин или пароль
         </div>
-        <div th:if="${param.logout}" class="text-center fs-6">
+        <div th:if="${param.logout}" style="color: darkgreen; text-decoration: underline;" class="text-center fs-6">
             Вы успешно вышли из личного кабинета.
         </div>
     </form>

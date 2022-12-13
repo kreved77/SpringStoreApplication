@@ -49,6 +49,7 @@
     </div>
 </header>
 
+<div class="container bodysection">
 <h2>Кабинет администратора</h2>
 
 <div class="row mt-3 mb-1">
@@ -86,26 +87,28 @@
 <!--<a href="/admin/orders">Заказы</a>-->
 <!--<br>-->
 <!--<a href="/admin/product/add">Добавить товар</a>-->
-<h3 id="catalog">Каталог товаров: </h3>
+<h3 id="catalog" style="font-size: 1.9rem;">Каталог товаров: </h3>
 <hr>
 <div th:each="product : ${products}">
+    <h4 th:text="${product.getTitle()}"></h4>
+    <p th:text="'Дата последнего изменения: ' + ${#temporals.format(product.getDateTimeOfCreated(), 'dd MMMM yyyy, HH:mm')}" class="anycenter"></p>
 <!--    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">-->
     <div>
         <span th:each="img : ${product.getImageList()}">
             <img th:src="'/img/' + ${img.getFileName()}" width="150px">
         </span>
     </div>
-    <p th:text="'Дата последнего изменения: ' + ${product.getDateTimeOfCreated()}"></p>
-    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
     <p th:text="'Описание: ' + ${product.getDescription()}"></p>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
     <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
     <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
     <p th:text="'Категория товара: ' + ${product.getCategory().getName()}"></p>
-    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>
-    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>
+    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}"><button class="button-link">Редактировать товар</button></a>
+    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}"><button class="button-input-small" style="color: red;">Удалить товар</button></a>
     <hr>
 </div>
+</div>
+
 <footer>
     <div class="container">
         <div class="row">

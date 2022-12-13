@@ -50,6 +50,7 @@
     </div>
 </header>
 
+<div class="container bodysection">
 <h2>Кабинет администратора. Пользователи</h2>
 
 <h3>Сортировка, поиск, фильтрация пользователей</h3>
@@ -80,13 +81,16 @@
     <p th:text="'Фамилия: ' + ${person.getLastname()}"></p>
     <p th:text="'Email: ' + ${person.getEmail()}"></p>
     <p th:text="'Телефон: ' + ${person.getPhoneNumber()}"></p>
-    <a th:href="@{/admin/person/edit/{id}(id=${person.getId()})}">Редактировать пользователя</a>
+<!--    <a th:href="@{/admin/person/edit/{id}(id=${person.getId()})}">Редактировать пользователя</a>-->
+    <a th:href="@{/admin/person/edit/{id}(id=${person.getId()})}"><button class="button-link">Редактировать пользователя</button></a>
+    <a th:href="@{/admin/person/delete/{id}(id=${person.getId()})}"><button class="button-input-small" style="color: red;">Удалить пользователя</button></a>
     <hr>
 </div>
+<!--<hr>-->
+<a href="/admin/person" class="button-input-small">Назад ко всем пользователям</a>
 <hr>
-<a href="/admin/person">Назад ко всем пользователям</a>
-<hr>
-<a href="/index">Назад в Главное меню</a>
+<a href="/index" class="button-input-small">Назад в Главное меню</a>
+</div>
 
 </body>
 </html>

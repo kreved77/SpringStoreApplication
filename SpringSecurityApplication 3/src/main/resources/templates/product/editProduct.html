@@ -3,29 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Редактирование товара</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link th:href="@{/img/icon/icon.png}" rel="icon" >
+    <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/style_product_cards.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/style_filter.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
-<h3>Редактирование товара</h3>
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 col-sm-3 col-3 logo">
+                <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-3 col-sm-9 col-9 text-center text-md-start">
+                <h1>EnjoyKid</h1>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/index">Товары</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/admin/orders">Заказы</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/admin/person">Пользователи</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <form method="get" th:action="@{/auth/password/changepersonal}">
+                    <input type="submit" value="Изменить пароль" class="button-input-small">
+                </form>
+                <form method="post" th:action="@{/logout}">
+                    <input type="submit" value="Выйти из кабинета" class="button-input-small">
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container bodysection">
+<h2>Редактирование товара</h2>
 <form th:method="POST" th:action="@{/admin/product/edit/{id}(id=${editProduct.getId()})}" th:object="${editProduct}">
-    <p th:text="'Дата последнего изменения: ' + ${editProduct.getDateTimeOfCreated()}"></p>
+    <h4 th:text="${editProduct.getTitle()}"></h4>
+<!--    <p th:text="'Дата последнего изменения: ' + ${editProduct.getDateTimeOfCreated()} " class="anycenter"></p>-->
+    <p th:text="'Дата последнего изменения: ' + ${#temporals.format(editProduct.getDateTimeOfCreated(), 'dd MMMM yyyy, HH:mm')}" class="anycenter"></p>
     <label for="title">Введите наименование: </label>
-    <input type="text" th:field="*{title}" placeholder="Наименование" id="title">
+    <input type="text" th:field="*{title}" placeholder="Наименование" id="title" class="fullwidth">
     <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
     <br>
     <br>
     <label for="description">Введите описание: </label>
-    <textarea th:field="*{description}" placeholder="Описание" id="description"></textarea>
+    <textarea th:field="*{description}" placeholder="Описание" id="description" class="fullwidth" rows="8"></textarea>
     <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
     <br>
     <br>
     <label for="price">Введите цену: </label>
     <input type="number" th:field="*{price}" min="1" step="0.00" id="price">
     <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
-    <br>
-    <br>
-    <label for="warehouse">Введите информацию о складе: </label>
-    <input type="text" th:field="*{warehouse}" placeholder="Склад" id="warehouse">
-    <div style="color: red" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
     <br>
     <br>
     <label for="category">Выберите категорию товара: </label>
@@ -36,13 +78,43 @@
     </select>
     <br>
     <br>
+    <label for="warehouse">Введите информацию о складе: </label>
+    <input type="text" th:field="*{warehouse}" placeholder="Склад" id="warehouse" class="fullwidth">
+    <div style="color: red" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
+    <br>
+    <br>
     <label for="seller">Введите данные о продавце: </label>
-    <textarea th:field="*{seller}" placeholder="Продавец" id="seller"></textarea>
+    <textarea th:field="*{seller}" placeholder="Продавец" id="seller" class="fullwidth" rows="1"></textarea>
     <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
     <br>
     <br>
-    <input type="submit" value="Редактировать">
+<!--    <input type="submit" value="Редактировать">-->
+    <input type="submit" value="Применить новые данные" class="button-input">
 </form>
-<a href="/index">Назад ко всем товарам</a>
+<hr>
+<a href="/index" class="button-input-small">Назад ко всем товарам</a>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Адрес:</h3>
+                <p>128784, г. Москва, наб. Молодцова, 5</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Телефон:</h3>
+                <a href="tel:+74951234555" style="font-size: 1rem;">+7 (495) 123-45-55</a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 logo ">
+                <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6 col-6 text-center push">
+                <h2 class="mt-0 mb-0">EnjoyKid</h2>
+                <p>Официальный поставщик.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

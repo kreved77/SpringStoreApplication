@@ -49,6 +49,7 @@
     </div>
 </header>
 
+<div class="container bodysection">
 <h2>Кабинет администратора. Пользователи</h2>
 <h3>Информация о пользователе</h3>
 <p th:text="'Логин: ' + ${person.getLogin()}"/>
@@ -61,11 +62,35 @@
 <!--<a th:href="@{/admin/person/edit/{id}(id=${person.getId()})}">Редактировать пользователя</a>-->
 <!--<a th:href="@{/admin/person/delete/{id}(id=${person.getId()})}">Удалить пользователя</a>-->
 <a th:href="@{/admin/person/edit/{id}(id=${person.getId()})}"><button class="button-link">Редактировать пользователя</button></a>
-<a th:href="@{/admin/person/delete/{id}(id=${person.getId()})}"><button class="button-link">Удалить пользователя</button></a>
+<a th:href="@{/admin/person/delete/{id}(id=${person.getId()})}"><button class="button-input-small" style="color: red;">Удалить пользователя</button></a>
 
 <hr>
-<a href="/admin/person">Назад ко всем пользователям</a>
+<a href="/admin/person" class="button-input-small">Назад ко всем пользователям</a>
 <hr>
-<a href="/index">Назад в Главное меню</a>
+<a href="/index" class="button-input-small">Назад в Главное меню</a>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Адрес:</h3>
+                <p>128784, г. Москва, наб. Молодцова, 5</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Телефон:</h3>
+                <a href="tel:+74951234555" style="font-size: 1rem;">+7 (495) 123-45-55</a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 logo ">
+                <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6 col-6 text-center push">
+                <h2 class="mt-0 mb-0">EnjoyKid</h2>
+                <p>Официальный поставщик.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
