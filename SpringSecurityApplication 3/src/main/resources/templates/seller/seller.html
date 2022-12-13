@@ -4,29 +4,142 @@
 <head>
     <meta charset="UTF-8">
     <title>Панель продавца</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link th:href="@{/img/icon/icon.png}" rel="icon" >
+    <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/style_product_cards.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/style_filter.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
-<h3>Личный кабинет Продавца</h3>
-<form th:method="POST" th:action="@{/logout}">
-    <input type="submit" value="Выйти из личного кабинета">
-</form>
-<form method="get" th:action="@{/auth/password/changepersonal}">
-    <input type="submit" value="Изменить свой пароль (Personal)">
-</form>
-<a href="/admin/product/add">Добавить товар</a>
-<h3>Каталог товаров: </h3>
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 col-sm-3 col-3 logo">
+                <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-3 col-sm-9 col-9 text-center text-md-start">
+                <h1>EnjoyKid</h1>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center push">
+                <a href="/index">Товары</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/admin/orders">Заказы</a>
+            </div>
+<!--            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">-->
+<!--                <a href="/admin/person">Пользователи</a>-->
+<!--            </div>-->
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <form method="get" th:action="@{/auth/password/changepersonal}">
+                    <input type="submit" value="Изменить пароль" class="button-input-small">
+                </form>
+                <form method="post" th:action="@{/logout}">
+                    <input type="submit" value="Выйти из кабинета" class="button-input-small">
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container bodysection">
+    <h2>Кабинет Продавца</h2>
+
+    <div class="row mt-3 mb-1">
+        <div class="col-md-6 text-center">
+            <h4>ТОВАРЫ</h4>
+            <a href="#catalog"><button class="button-link">Все товары</button></a>
+            <a href="#"><button class="button-link">Фильтр по категории</button></a>
+            <a href="/admin/product/add"><button class="button-link">Добавить новый товар</button></a>
+        </div>
+        <div class="col-md-6 text-center">
+            <h4>ЗАКАЗЫ</h4>
+            <a href="/admin/orders#orders-all"><button class="button-link">Все Заказы</button></a>
+            <a href="/admin/orders"><button class="button-link">Поиск по номеру</button></a>
+            <a href="/admin/orders#orders-filter"><button class="button-link">Фильтр по статусу</button></a>
+        </div>
+<!--        <div class="col-md-4 text-center">-->
+<!--            <h4>ПОЛЬЗОВАТЕЛИ</h4>-->
+<!--            <a href="/admin/person#person-all"><button class="button-link">Все Пользователи</button></a>-->
+<!--            <a href="/admin/person/sorting_and_searching_and_filters"><button class="button-link">Найти пользователя</button></a>-->
+<!--            <a href="/admin/password/change"><button class="button-link">СБРОСИТЬ пароль<br/> пользователю (по Логину)</button></a>-->
+<!--        </div>-->
+    </div>
+    <hr/>
+
+<!--<h3>Личный кабинет Продавца</h3>-->
+<!--<form th:method="POST" th:action="@{/logout}">-->
+<!--    <input type="submit" value="Выйти из личного кабинета">-->
+<!--</form>-->
+<!--<form method="get" th:action="@{/auth/password/changepersonal}">-->
+<!--    <input type="submit" value="Изменить свой пароль (Personal)">-->
+<!--</form>-->
+<!--<a href="/admin/product/add">Добавить товар</a>-->
+<!--<h3>Каталог товаров: </h3>-->
+<!--<hr>-->
+<!--<div th:each="product : ${products}">-->
+<!--    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">-->
+<!--    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>-->
+<!--    <p th:text="'Описание: ' + ${product.getDescription()}"></p>-->
+<!--    <p th:text="'Цена: ' + ${product.getPrice()}"></p>-->
+<!--    <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>-->
+<!--    <p th:text="'Продавец: ' + ${product.getSeller()}"></p>-->
+<!--    <p th:text="'Категория товара: ' + ${product.getCategory().getName()}"></p>-->
+<!--    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>-->
+<!--    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>-->
+<!--    <hr>-->
+<!--</div>-->
+
+<h3 id="catalog" style="font-size: 1.9rem;">Каталог товаров: </h3>
 <hr>
 <div th:each="product : ${products}">
-    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
-    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
+    <h4 th:text="${product.getTitle()}"></h4>
+    <p th:text="'Дата последнего изменения: ' + ${#temporals.format(product.getDateTimeOfCreated(), 'dd MMMM yyyy, HH:mm')}" class="anycenter"></p>
+    <!--    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">-->
+    <div>
+        <span th:each="img : ${product.getImageList()}">
+            <img th:src="'/img/' + ${img.getFileName()}" width="220px">
+        </span>
+    </div>
     <p th:text="'Описание: ' + ${product.getDescription()}"></p>
     <p th:text="'Цена: ' + ${product.getPrice()}"></p>
     <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
     <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
     <p th:text="'Категория товара: ' + ${product.getCategory().getName()}"></p>
-    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактировать товар</a>
-    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удалить товар</a>
+    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}"><button class="button-link">Редактировать товар</button></a>
+    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}"><button class="button-input-small" style="color: red;">Удалить товар</button></a>
     <hr>
 </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Адрес:</h3>
+                <p>128784, г. Москва, наб. Молодцова, 5</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Телефон:</h3>
+                <a href="tel:+74951234555" style="font-size: 1rem;">+7 (495) 123-45-55</a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 logo ">
+                <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6 col-6 text-center push">
+                <h2 class="mt-0 mb-0">EnjoyKid</h2>
+                <p>Официальный поставщик.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

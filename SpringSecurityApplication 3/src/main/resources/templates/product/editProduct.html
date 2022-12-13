@@ -88,6 +88,11 @@
     <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
     <br>
     <br>
+    <div>
+        <span th:each="img : ${editProduct.getImageList()}">
+            <img th:src="'/img/' + ${img.getFileName()}" width="220px">
+        </span>
+    </div>
 <!--    <input type="submit" value="Редактировать">-->
     <input type="submit" value="Применить новые данные" class="button-input">
 </form>

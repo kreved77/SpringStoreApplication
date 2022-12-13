@@ -52,7 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Указываем что все страницы должны быть защищены аутентификации
                 .authorizeRequests()
                 // Указываем что /admin доступин пользователю с ролью администратора
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+//                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN", "SELLER")
 //                .antMatchers("/user").hasAnyRole("USER")
                 // Указываем что не аутентифицированные пользователи могут заходить на страницу с формой аутентификации и на объект ошибки
                 // С помощью permitAll указывакем что данные страницы по умолчанию доступны всем пользователям
@@ -67,6 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // Указываем что дальше конфигурироваться будет аутентификация и соединяем аутентификацию с настройкой доступа
                 .and()
                 .formLogin().loginPage("/auth/login")
+//                .formLogin().loginPage("/product")
                 // Указываем на какой url адрес будут отправляться данные с формы. Нам уже не нужно будет создавать метод в контроллере и обрабатывать данные с формы. Мы задали url по умолчанию, который позволяет обрабатывать форму аутентификации в спринг секьюрити. Спринг секьюрити будет ждать логин и пароль с формы и затем сверить их с данными в БД
                 .loginProcessingUrl("/process_login")
                 // Указываем на какой url необходимо направить пользователя после успешной аутентификации

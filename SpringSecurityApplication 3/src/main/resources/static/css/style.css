@@ -203,7 +203,7 @@ table.iksweb thead th{font-weight:normal;font-size:18px; color:#ffffff;backgroun
 table.iksweb td{font-size:16px;color:#354251;}
 
 table.iksweb td,
-table.iksweb th{white-space:pre-wrap;padding:10px 5px;line-height:14px;vertical-align: middle;border: 1px solid #261f70;background-color:#f4fffedb;}
+table.iksweb th{padding:10px 5px;line-height:14px;vertical-align: middle;border: 1px solid #261f70;background-color:#f4fffedb;}
 
 /*table.iksweb tr:hover{background-color:#f9fafb}*/
 table.iksweb tr:hover{background-color: #ffffff; border: 2px solid #2611ff;}
