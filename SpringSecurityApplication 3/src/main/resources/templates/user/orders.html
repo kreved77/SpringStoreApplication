@@ -17,7 +17,7 @@
     <p th:text="'Комментарий к заказу: ' + ${order.getTextDetails()}"></p>
     <p th:text="'Статус: ' + ${order.getStatus()}"></p>
 </div>
-    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[4] ? true : false}">Отменить</button>
+    <button type="submit" th:disabled="${order.getStatus() eq T(com.example.springsecurityapplication.enumm.Status).values()[0] ? false : true}">Отменить</button>
     <hr>
 
 </form>
