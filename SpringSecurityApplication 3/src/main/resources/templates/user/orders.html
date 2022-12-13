@@ -3,14 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Заказы</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link th:href="@{/img/icon/icon.png}" rel="icon" >
+    <link th:href="@{/css/style.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/style_product_cards.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/style_filter.css}" type="text/css" rel="stylesheet">
 </head>
 <body>
-<h3>Заказы</h3>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1 col-sm-3 col-3 logo">
+                <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-3 col-sm-9 col-9 text-center text-md-start">
+                <h1>EnjoyKid</h1>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/index">Каталог товаров</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/cart">Корзина</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <a href="/orders">Мои Заказы</a>
+            </div>
+            <div class="col-md-2 col-sm-12 col-12 text-center align-self-center">
+                <form method="get" th:action="@{/auth/password/changepersonal}">
+                    <input type="submit" value="Изменить пароль" class="button-input-small">
+                </form>
+                <form method="post" th:action="@{/logout}">
+                    <input type="submit" value="Выйти из кабинета" class="button-input-small">
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<header>
+    <div class="container search-bar-section anycenter" id="search-bar-section">
+        <form th:method="POST" th:action="@{/search}">
+            <!--            <label for="search-bar">Поиск по наименованию</label>-->
+            <input type="search" name="search" style="width:360px" placeholder="Поиск по наименованию" th:value="*{value_search}" id="search-bar">
+            <input type="text" name="ot" id="ot" hidden>
+            <input type="text" name="do" id="do" hidden>
+            <input type="submit" value="Найти" class="button-input-small">
+        </form>
+    </div>
+</header>
+
+<div class="container bodysection">
+<h2>Заказы</h2>
+<!--<h3>Заказы</h3>-->
 <form method="POST" th:action="@{/orders/cancel/{id}(id=${order.getId()})}"  th:each="order : ${orders}">
 <div>
     <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
     <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="100px">
-    <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>
+<!--    <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>-->
+    <p> <a th:href="@{/user/product/info/{id}(id=${order.getProduct().getId()})}" th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></a> </p>
     <p th:text="'Количество: ' + ${order.getCount()}"></p>
     <p th:text="'Цена: ' + ${order.getPrice()}"></p>
     <p th:text="'Дата заказа: ' + ${#temporals.format(order.getDateTime(), 'dd-MMM-yyyy')}"></p>
@@ -21,6 +79,29 @@
     <hr>
 
 </form>
-<a href="/index">Назад ко всем товарам</a>
+<a href="/index" class="button-input-small">Назад ко всем товарам</a>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Адрес:</h3>
+                <p>128784, г. Москва, наб. Молодцова, 5</p>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6">
+                <h3 class="mt-0 mb-0 ta-s">Телефон:</h3>
+                <a href="tel:+74951234555" style="font-size: 1rem;">+7 (495) 123-45-55</a>
+            </div>
+            <div class="col-md-3 col-sm-6 col-6 logo ">
+                <img th:src="@{/img/icon/icon.png}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6 col-6 text-center push">
+                <h2 class="mt-0 mb-0">EnjoyKid</h2>
+                <p>Официальный поставщик.</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
