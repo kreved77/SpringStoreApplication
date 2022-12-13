@@ -65,8 +65,17 @@
 <!--<h3>Заказы</h3>-->
 <form method="POST" th:action="@{/orders/cancel/{id}(id=${order.getId()})}"  th:each="order : ${orders}">
 <div>
-    <h3 th:text="'Заказ № ' + ${order.getNumber()}"></h3>
-    <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="100px">
+    <h4 th:text="'Заказ № ' + ${order.getNumber()}"></h4>
+    <div class="container">
+        <div class="row anycenter" style="padding-right: 0px!important; padding-left: 0px!important;">
+            <!--            <h3>Изображения товара: </h3>-->
+            <div th:each="img : ${order.getProduct().getImageList()}" class="col-md-2 col-sm-4 col-4 text-center align-self-center" style="padding: 3px!important;">
+                <img th:src="'/img/' + ${img.getFileName()}" class="imgadapt">
+            </div>
+        </div>
+        <br>
+    </div>
+<!--    <img th:src="'/img/' + ${order.getProduct().imageList[0].getFileName()}" width="100px">-->
 <!--    <p th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></p>-->
     <p> <a th:href="@{/user/product/info/{id}(id=${order.getProduct().getId()})}" th:text="'Наименование: ' + ${order.getProduct().getTitle()}"></a> </p>
     <p th:text="'Количество: ' + ${order.getCount()}"></p>
@@ -79,7 +88,7 @@
     <hr>
 
 </form>
-<a href="/index" class="button-input-small">Назад ко всем товарам</a>
+<a href="/index" class="anycenter button-input-small">Назад ко всем товарам</a>
 </div>
 
 <footer>

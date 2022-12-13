@@ -62,24 +62,45 @@
 
 <div class="container bodysection">
     <h2>Информация о товаре</h2>
-<p th:text="'Наименование: ' + ${product.getTitle()}"></p>
-<p th:text="'Описание: ' + ${product.getDescription()}"></p>
-<p th:text="'Цена: ' + ${product.getPrice()}"></p>
-<p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
-<p th:text="'Продавец: ' + ${product.getSeller()}"></p>
-<p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+    <h4 th:text="${product.getTitle()}"></h4>
+    <!--    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>-->
+    <p th:text="'Категория: ' + ${product.getCategory().getName()}" class="anycenter"></p>
 
-<div th:each="img : ${product.getImageList()}">
-    <img th:src="'/img/' + ${img.getFileName()}" width="300px">
-</div>
-<!--<a th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a>-->
-    <div>
+
+    <div class="container">
+        <div class="row anycenter" style="padding-right: 0px!important; padding-left: 0px!important;">
+<!--            <h3>Изображения товара: </h3>-->
+            <div th:each="img : ${product.getImageList()}" class="col-md-3 col-sm-6 col-12 text-center align-self-center" style="padding: 3px!important;">
+                <img th:src="'/img/' + ${img.getFileName()}" class="imgadapt">
+            </div>
+        </div>
+    </div>
+
+    <p th:text="${product.getDescription()}"></p>
+<!--    <p th:text="'Описание: ' + ${product.getDescription()}"></p>-->
+    <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
+    <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+    <h5>Цена
+        <h4 th:text="${product.getPrice()} + ' руб.'"></h4>
+    </h5>
+    <!--    <div th:each="img : ${product.getImageList()}">-->
+    <!--        <img th:src="'/img/' + ${img.getFileName()}" width="300px">-->
+    <!--    </div>-->
+
+    <!--    <div class="container anycenter">-->
+    <!--        <span th:each="img : ${product.getImageList()}">-->
+    <!--            <img th:src="'/img/' + ${img.getFileName()}" width="300px">-->
+    <!--        </span>-->
+    <!--    </div>-->
+
+    <div class="anycenter">
         <a th:href="@{/cart/add/{id}(id=${product.getId()})}">
             <button type="button" class="btn bg-cart"><i class="fa fa-cart-plus mr-2"></i> Добавить в корзину</button>
         </a>
     </div>
+<!--<a th:href="@{/cart/add/{id}(id=${product.getId()})}">Добавить в корзину</a>-->
 <hr/>
-<a href="/index" class="button-input-small">Назад ко всем товарам</a>
+<a href="/index" class="anycenter button-input-small">Назад ко всем товарам</a>
 </div>
 
 <footer>

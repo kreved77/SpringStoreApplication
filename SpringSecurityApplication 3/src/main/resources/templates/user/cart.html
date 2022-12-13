@@ -62,33 +62,54 @@
 
 <div class="container bodysection">
 <h2>Корзина товаров</h2>
+    <br>
 
 <!--<h3>Корзина товаров</h3>-->
 <div th:each="product : ${cart_product}">
-    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
+    <h4 th:text="${product.getTitle()}"></h4>
+    <!--    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>-->
+    <p th:text="'Категория: ' + ${product.getCategory().getName()}" class="anycenter"></p>
+    <div class="container">
+        <div class="row anycenter" style="padding-right: 0px!important; padding-left: 0px!important;">
+            <!--            <h3>Изображения товара: </h3>-->
+            <div th:each="img : ${product.getImageList()}" class="col-md-2 col-sm-4 col-4 text-center align-self-center" style="padding: 3px!important;">
+                <img th:src="'/img/' + ${img.getFileName()}" class="imgadapt">
+            </div>
+        </div>
+    </div>
+<!--    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">-->
+    <h5>Цена
+        <span style="font-weight: bold" th:text="${product.getPrice()} + ' руб.'"></span>
+    </h5>
+    <span>Подробнее: <a th:href="@{/user/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a></span>
     <br>
-    <br>
-    <a th:href="@{/user/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
-    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
-    <a th:href="@{/cart/delete/{id}(id=${product.getId()})}" class="button-input-small">Удалить</a>
-</div>
-<!--<h3 th:text="'Итоговая цена: ' + ${price}"></h3>-->
-<h3 th:text="${cart_product.isEmpty() ? 'Ваша корзина пуста.' : 'Итоговая цена: ' + price}"></h3>
+<!--    <a th:href="@{/cart/delete/{id}(id=${product.getId()})}" class="button-input-small push">Удалить</a>-->
 
-<form method="POST" th:action="@{/order/create}">
-    <label for="text_to_order">Комментарий к заказу: </label>
+    <a th:href="@{/cart/delete/{id}(id=${product.getId()})}"><button class="button-input-small">Удалить</button></a>
+<!--    <p th:text="'Цена: ' + ${product.getPrice()} + ' руб.'"></p>-->
     <br>
+    <br>
+    <hr>
+    <br>
+</div>
+    <br>
+<!--<h3 th:text="'Итоговая цена: ' + ${price}"></h3>-->
+<h4 th:text="${cart_product.isEmpty() ? 'Ваша корзина пуста.' : 'Итоговая цена: ' + price + ' руб.'}"></h4>
+
+    <br>
+<form method="POST" th:action="@{/order/create}">
+    <h3><label for="text_to_order">Комментарий к заказу: </label></h3>
     <textarea name="textorder" th:value="*{textorder}" placeholder="Комментарий" id="text_to_order" cols="100" rows="6"></textarea>
     <br>
 
 <!--    <button type="submit" text="Оформить заказ"></button>-->
-    <input type="submit" value="Оформить заказ" class="button-input" th:disabled="${cart_product.isEmpty() ? true : false}">
+    <input type="submit" value="Оформить заказ" class="anycenter button-input" th:disabled="${cart_product.isEmpty() ? true : false}">
 </form>
 
 <br>
 <hr/>
 <!--<a href="/order/create">Оформить заказ</a>-->
-<a href="/index" class="button-input-small">Назад ко всем товарам</a>
+<a href="/index" class="anycenter button-input-small">Назад ко всем товарам</a>
 </div>
 
 <footer>

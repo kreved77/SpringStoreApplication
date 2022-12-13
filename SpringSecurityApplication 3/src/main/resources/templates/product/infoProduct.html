@@ -40,7 +40,7 @@
 
 <header>
     <div class="container search-bar-section anycenter" id="search-bar-section">
-        <form th:method="POST" th:action="@{/product/search}">
+        <form th:method="POST" th:action="@{/product/search}" class="anycenter">
             <!--            <label for="search-bar">Поиск по наименованию</label>-->
             <input type="search" name="search" style="width:360px" placeholder="Поиск по наименованию" th:value="*{value_search}" id="search-bar">
             <input type="text" name="ot" id="ot" hidden>
@@ -52,17 +52,38 @@
 
 <div class="container bodysection">
     <h2>Информация о товаре</h2>
-    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
-    <p th:text="'Описание: ' + ${product.getDescription()}"></p>
-    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+    <h4 th:text="${product.getTitle()}"></h4>
+<!--    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>-->
+    <p th:text="'Категория: ' + ${product.getCategory().getName()}" class="anycenter"></p>
+    <p th:text="${product.getDescription()}"></p>
+<!--    <p th:text="'Цена: ' + ${product.getPrice()}"></p>-->
     <p th:text="'Склад: ' + ${product.getWarehouse()}"></p>
     <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
-    <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
-    <div th:each="img : ${product.getImageList()}">
-        <img th:src="'/img/' + ${img.getFileName()}" width="300px">
+    <h5>Цена
+        <h4 th:text="${product.getPrice()} + ' руб.'"></h4>
+    </h5>
+<!--    <div th:each="img : ${product.getImageList()}">-->
+<!--        <img th:src="'/img/' + ${img.getFileName()}" width="300px">-->
+<!--    </div>-->
+
+<!--    <div class="container anycenter">-->
+<!--        <span th:each="img : ${product.getImageList()}">-->
+<!--            <img th:src="'/img/' + ${img.getFileName()}" width="300px">-->
+<!--        </span>-->
+<!--    </div>-->
+
+
+    <div class="container">
+        <div class="row anycenter" style="padding-right: 0px!important; padding-left: 0px!important;">
+            <h3>Изображения товара: </h3>
+            <div th:each="img : ${product.getImageList()}" class="col-md-3 col-sm-6 col-12 text-center align-self-center" style="padding: 3px!important;">
+                <img th:src="'/img/' + ${img.getFileName()}" class="imgadapt">
+            </div>
+        </div>
     </div>
+
     <hr/>
-    <a href="/product" class="button-input-small">Назад ко всем товарам</a>
+    <a href="/product" class="anycenter button-input-small">Назад ко всем товарам</a>
 
 </div>
 

@@ -34,6 +34,7 @@
    /*border: 1px solid rgba(0,0,0,.125);*/
    border: 2px solid orange;
    border-radius: .1875rem;
+   border-radius: 40px;
 }
 
 .card-img-actions {
@@ -53,6 +54,11 @@
 
 .star{
        color: red;
+}
+
+.bg-light {
+   background-color: #f8f9fa!important;
+   border-radius: 0px 0px 40px 40px;
 }
 
 .bg-cart {
