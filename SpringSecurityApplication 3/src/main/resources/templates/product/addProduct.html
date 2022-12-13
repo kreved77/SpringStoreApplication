@@ -85,16 +85,99 @@
     <label for="seller">Введите данные о продавце: </label>
     <textarea th:field="*{seller}" placeholder="Продавец" id="seller" class="fullwidth" rows="1"></textarea>
     <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
-    <br>
-    <br>
-    <p>Добавлениие фотографий товара: </p>
-    <input type="file" name="file_one">
-    <input type="file" name="file_two">
-    <input type="file" name="file_three">
-    <input type="file" name="file_four">
-    <input type="file" name="file_five">
+
+<!--    <div>-->
+<!--        <label for="image_uploads">Choose images to upload (PNG, JPG)</label>-->
+<!--        <input-->
+<!--            type="file"-->
+<!--            id="image_uploads"-->
+<!--            name="image_uploads"-->
+<!--            accept=".jpg, .jpeg, .png"-->
+<!--            multiple />-->
+<!--    </div>-->
+<!--    <div class="preview">-->
+<!--        <p>No files currently selected for upload</p>-->
+<!--    </div>-->
+
+<!--    <br>-->
+<!--    <br>-->
+<!--    <p>Добавлениие фотографий товара: </p>-->
+<!--    <label for="file_one">Choose image 1:</label>-->
+<!--    <input type="file" name="file_one" id="file_one" accept="image/png, image/jpeg">-->
+<!--    <input type="file" name="file_two" accept="image/png, image/jpeg">-->
+<!--    <input type="file" name="file_three" accept="image/png, image/jpeg">-->
+<!--    <input type="file" name="file_four" accept="image/png, image/jpeg">-->
+<!--    <input type="file" name="file_five" accept="image/png, image/jpeg">-->
 <!--    <input type="submit" value="Добавить">-->
-    <p style="color: red">Вы можете добавить до 5 фотографий. Первая фотография не может быть пустой</p>
+<!--    <p style="color: red">Вы можете добавить до 5 фотографий (PNG, JPG).-->
+<!--        <br>Первая фотография не может быть пустой.</p>-->
+    <br>
+    <br>
+        <div class="container">
+            <div class="row" style="padding-right: 0px!important; padding-left: 0px!important;">
+                <p>Добавлениие фотографий товара: </p>
+                    <p style="color: red">Первая фотография не может быть пустой. Вы можете добавить до 5 фотографий (PNG, JPG).
+<!--                        <br>-->
+                    </p>
+                <div class="col-md-3 col-sm-12 col-12 text-center align-self-center" style="padding-right: 0px!important; padding-left: 0px!important;">
+                    <div>
+                        <a href="#" class="button-input">
+                            <label for="file_one" id="add_img_1">Изображение 1:</label>
+                        </a>
+                        <input type="file" id="file_one" name="file_one" accept=".jpg, .jpeg, .png"/>
+                    </div>
+                    <div class="preview_file_one">
+                        <p>Файл не загружен.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-6 text-center align-self-center" style="padding-right: 0px!important; padding-left: 0px!important;">
+                    <div>
+                        <a href="#" class="button-input-small">
+                            <label for="file_two" id="add_img_2">Изображение 2:</label>
+                        </a>
+                        <input type="file" id="file_two" name="file_two" accept=".jpg, .jpeg, .png"/>
+                    </div>
+                    <div class="preview_file_two">
+                        <p>Файл не загружен.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-6 text-center align-self-center" style="padding-right: 0px!important; padding-left: 0px!important;">
+                    <div>
+                        <a href="#" class="button-input-small">
+                            <label for="file_three" id="add_img_3">Изображение 3:</label>
+                        </a>
+                        <input type="file" id="file_three" name="file_three" accept=".jpg, .jpeg, .png"/>
+                    </div>
+                    <div class="preview_file_three">
+                        <p>Файл не загружен.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-6 text-center align-self-center" style="padding-right: 0px!important; padding-left: 0px!important;">
+                    <div>
+                        <a href="#" class="button-input-small">
+                            <label for="file_four" id="add_img_4">Изображение 4:</label>
+                        </a>
+                        <input type="file" id="file_four" name="file_four" accept=".jpg, .jpeg, .png"/>
+                    </div>
+                    <div class="preview_file_four">
+                        <p>Файл не загружен.</p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-6 text-center align-self-center" style="padding-right: 0px!important; padding-left: 0px!important;">
+                    <div>
+                        <a href="#" class="button-input-small">
+                            <label for="file_five" id="add_img_5">Изображение 5:</label>
+                        </a>
+                        <input type="file" id="file_five" name="file_five" accept=".jpg, .jpeg, .png"/>
+                    </div>
+                    <div class="preview_file_five">
+                        <p>Файл не загружен.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <br>
     <br>
     <input type="submit" value="Добавить товар в каталог" class="button-input">
 </form>
@@ -123,5 +206,6 @@
         </div>
     </div>
 </footer>
+<script th:src="@{/js/displayimage.js}"></script>
 </body>
 </html>
