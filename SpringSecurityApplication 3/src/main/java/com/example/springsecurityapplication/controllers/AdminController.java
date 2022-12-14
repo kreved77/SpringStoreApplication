@@ -82,6 +82,10 @@ public class AdminController {
         return "admin/admin";
     }
 
+
+
+// PRODUCT
+
     // Метод по отображению формы добавление
     @GetMapping("/product/add")
     public String addProduct(Model model){

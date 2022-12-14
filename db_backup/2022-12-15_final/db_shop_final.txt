@@ -1,0 +1,25 @@
+PostgreSQL 14
+"db_shop"
++++ with last add items to video
+on Dec 15, 2022
+
+
+ЛОГИНЫ и ПАРОЛИ
+Admin !QAZ2wsx
+User1 User1!23
+zzzzz !Q1q1q1q
+qqqqq !QAZ2wsx
+
+Admin
+dream1
+funny2
+curve3
+many6
+!QAZ2wsx
+
+User1
+shiny4
+User1!23
+
+
+ --host "localhost" --port "5432" --username "postgres" --no-password --verbose --format=p --inserts --column-inserts "db_shop"
