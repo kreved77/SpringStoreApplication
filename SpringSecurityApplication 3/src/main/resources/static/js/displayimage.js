@@ -1,3 +1,5 @@
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#examples
+//
 // const input = document.querySelector("#image_uploads");
 // const preview = document.querySelector('.preview');
 const input_1 = document.querySelector("#file_one");
